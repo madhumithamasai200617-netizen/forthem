@@ -767,15 +767,14 @@ app.use((req, res) => {
    START SERVER
 ===================================================== */
 
-app.listen(PORT, () => {
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log("");
+        console.log("======================================");
+        console.log("🚀 FOR THEM BACKEND RUNNING");
+        console.log(`🌐 http://localhost:${PORT}`);
+        console.log("======================================");
+    });
+}
 
-    console.log("");
-    console.log("======================================");
-    console.log("🚀 FOR THEM BACKEND RUNNING");
-    console.log(
-        `🌐 http://localhost:${PORT}`
-    );
-    console.log("======================================");
-    console.log("");
-
-});
+module.exports = app;
