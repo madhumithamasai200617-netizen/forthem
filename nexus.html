@@ -1,0 +1,2553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="FOR THEM - NEXUS AI Prevention Assistant"
+    >
+
+    <title>FOR THEM | NEXUS AI</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family: "Inter", sans-serif;
+
+            color: #ffffff;
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(0, 229, 255, 0.10),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(58, 123, 255, 0.12),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #030914,
+                    #071525,
+                    #0a192f,
+                    #06101c
+                );
+
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           BACKGROUND GLOW
+        ====================================================== */
+
+        .bg-glow {
+
+            position: fixed;
+
+            width: 420px;
+            height: 420px;
+
+            border-radius: 50%;
+
+            filter: blur(120px);
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            opacity: 0.3;
+        }
+
+
+        .glow-one {
+
+            top: -220px;
+            left: -150px;
+
+            background:
+                rgba(0, 229, 255, 0.15);
+
+            animation:
+                glowMove 10s ease-in-out infinite alternate;
+        }
+
+
+        .glow-two {
+
+            right: -200px;
+            bottom: -200px;
+
+            background:
+                rgba(58, 123, 255, 0.15);
+
+            animation:
+                glowMove 12s ease-in-out infinite alternate-reverse;
+        }
+
+
+        @keyframes glowMove {
+
+            from {
+                transform:
+                    translate(0, 0)
+                    scale(1);
+            }
+
+            to {
+                transform:
+                    translate(50px, -40px)
+                    scale(1.15);
+            }
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ====================================================== */
+
+        .sidebar {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 245px;
+            height: 100vh;
+
+            padding: 28px 18px;
+
+            background:
+                rgba(3, 9, 20, 0.88);
+
+            backdrop-filter: blur(20px);
+
+            border-right:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            z-index: 100;
+
+            display: flex;
+            flex-direction: column;
+
+            transition: 0.3s ease;
+        }
+
+
+        .logo {
+
+            padding:
+                0 12px 28px;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .logo span {
+            color: #00e5ff;
+        }
+
+
+        .menu-label {
+
+            padding:
+                0 12px;
+
+            margin-bottom: 10px;
+
+            color: #4e6276;
+
+            font-size: 8px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+
+        .nav-menu {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+        }
+
+
+        .nav-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            padding:
+                12px 13px;
+
+            border-radius: 11px;
+
+            color: #708296;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            transition: 0.3s ease;
+        }
+
+
+        .nav-item:hover {
+
+            color: #ffffff;
+
+            background:
+                rgba(0,229,255,0.05);
+
+            transform:
+                translateX(3px);
+        }
+
+
+        .nav-item.active {
+
+            color: #00e5ff;
+
+            background:
+                rgba(0,229,255,0.08);
+
+            border:
+                1px solid
+                rgba(0,229,255,0.10);
+        }
+
+
+        .nav-icon {
+
+            width: 23px;
+
+            font-size: 15px;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           USER AREA
+        ====================================================== */
+
+        .sidebar-bottom {
+
+            margin-top: auto;
+        }
+
+
+        .user-mini {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 12px;
+
+            margin-bottom: 10px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.06);
+        }
+
+
+        .avatar {
+
+            width: 34px;
+            height: 34px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            color: #021018;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+
+        .user-mini-text strong {
+
+            display: block;
+
+            color: #dce7ef;
+
+            font-size: 10px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .user-mini-text span {
+
+            color: #53677a;
+
+            font-size: 8px;
+        }
+
+
+        .logout-btn {
+
+            width: 100%;
+
+            padding: 10px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            background:
+                rgba(255,255,255,0.025);
+
+            color: #667a8d;
+
+            font-size: 9px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .logout-btn:hover {
+
+            color: #ff6b6b;
+
+            border-color:
+                rgba(255,107,107,0.25);
+        }
+
+
+        /* =====================================================
+           MAIN
+        ====================================================== */
+
+        .main {
+
+            margin-left: 245px;
+
+            min-height: 100vh;
+
+            padding:
+                30px 5% 50px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* =====================================================
+           TOP BAR
+        ====================================================== */
+
+        .topbar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+
+        .top-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .page-title {
+
+            color: #718397;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+
+        .top-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .status {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #607488;
+
+            font-size: 8px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .status-dot {
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #00ff9d;
+
+            box-shadow:
+                0 0 10px
+                rgba(0,255,157,0.7);
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ====================================================== */
+
+        .mobile-menu {
+
+            display: none;
+
+            width: 36px;
+            height: 36px;
+
+            border-radius: 9px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            background:
+                rgba(255,255,255,0.03);
+
+            color: white;
+
+            font-size: 18px;
+        }
+
+
+        /* =====================================================
+           NEXUS HEADER
+        ====================================================== */
+
+        .nexus-header {
+
+            padding: 28px 30px;
+
+            border-radius: 22px;
+
+            background:
+
+                linear-gradient(
+                    120deg,
+                    rgba(0,229,255,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(0,229,255,0.13);
+
+            margin-bottom: 18px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            animation:
+                fadeUp 0.7s ease;
+        }
+
+
+        .nexus-header::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            right: -80px;
+            top: -130px;
+
+            background:
+                rgba(0,229,255,0.08);
+
+            filter: blur(30px);
+        }
+
+
+        @keyframes fadeUp {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(18px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        .nexus-title-row {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .nexus-logo {
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 18px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 28px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(0,229,255,0.15),
+                    rgba(58,123,255,0.12)
+                );
+
+            border:
+                1px solid
+                rgba(0,229,255,0.25);
+
+            box-shadow:
+                0 0 30px
+                rgba(0,229,255,0.08);
+
+            animation:
+                nexusPulse 3s ease-in-out infinite;
+        }
+
+
+        @keyframes nexusPulse {
+
+            0% {
+                box-shadow:
+                    0 0 20px
+                    rgba(0,229,255,0.05);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 35px
+                    rgba(0,229,255,0.18);
+            }
+
+            100% {
+                box-shadow:
+                    0 0 20px
+                    rgba(0,229,255,0.05);
+            }
+        }
+
+
+        .nexus-title h1 {
+
+            font-family: "Poppins", sans-serif;
+
+            font-size:
+                clamp(22px, 3vw, 30px);
+
+            margin-bottom: 5px;
+        }
+
+
+        .nexus-title h1 span {
+            color: #00e5ff;
+        }
+
+
+        .nexus-title p {
+
+            color: #708296;
+
+            font-size: 10px;
+
+            line-height: 1.7;
+        }
+
+
+        .ai-status {
+
+            margin-left: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 8px 12px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(0,255,157,0.05);
+
+            border:
+                1px solid
+                rgba(0,255,157,0.12);
+
+            color: #00ff9d;
+
+            font-size: 8px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =====================================================
+           CHAT CONTAINER
+        ====================================================== */
+
+        .chat-container {
+
+            height:
+                calc(100vh - 220px);
+
+            min-height: 520px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            backdrop-filter: blur(18px);
+
+            overflow: hidden;
+
+            animation:
+                fadeUp 0.8s ease;
+        }
+
+
+        /* =====================================================
+           CHAT TOP
+        ====================================================== */
+
+        .chat-top {
+
+            padding:
+                14px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.06);
+        }
+
+
+        .chat-top-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .mini-nexus {
+
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background:
+                rgba(0,229,255,0.08);
+
+            border:
+                1px solid
+                rgba(0,229,255,0.15);
+
+            font-size: 17px;
+        }
+
+
+        .chat-name strong {
+
+            display: block;
+
+            font-size: 10px;
+
+            color: #dce7ef;
+        }
+
+
+        .chat-name span {
+
+            color: #52677a;
+
+            font-size: 8px;
+        }
+
+
+        .clear-btn {
+
+            padding:
+                7px 11px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            color: #607488;
+
+            font-size: 8px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .clear-btn:hover {
+
+            color: #00e5ff;
+
+            border-color:
+                rgba(0,229,255,0.2);
+        }
+
+
+        /* =====================================================
+           CHAT MESSAGES
+        ====================================================== */
+
+        .chat-messages {
+
+            flex: 1;
+
+            padding:
+                25px;
+
+            overflow-y: auto;
+
+            scroll-behavior: smooth;
+        }
+
+
+        .chat-messages::-webkit-scrollbar {
+            width: 5px;
+        }
+
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+
+        .chat-messages::-webkit-scrollbar-thumb {
+
+            background:
+                rgba(0,229,255,0.15);
+
+            border-radius: 10px;
+        }
+
+
+        .message {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 18px;
+
+            animation:
+                messageIn 0.35s ease;
+        }
+
+
+        @keyframes messageIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(10px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        .message.user {
+
+            justify-content: flex-end;
+        }
+
+
+        .message-avatar {
+
+            width: 32px;
+            height: 32px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+        }
+
+
+        .ai-message .message-avatar {
+
+            background:
+                rgba(0,229,255,0.08);
+
+            border:
+                1px solid
+                rgba(0,229,255,0.14);
+        }
+
+
+        .user-message .message-avatar {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            color: #021018;
+
+            order: 2;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        .message-content {
+
+            max-width: 72%;
+        }
+
+
+        .message-bubble {
+
+            padding:
+                13px 16px;
+
+            border-radius: 15px;
+
+            color: #c9d7e1;
+
+            font-size: 10px;
+
+            line-height: 1.75;
+
+            white-space: pre-wrap;
+        }
+
+
+        .ai-message .message-bubble {
+
+            background:
+                rgba(255,255,255,0.045);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            border-top-left-radius: 4px;
+        }
+
+
+        .user-message .message-bubble {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,229,255,0.13),
+                    rgba(58,123,255,0.13)
+                );
+
+            border:
+                1px solid
+                rgba(0,229,255,0.15);
+
+            border-top-right-radius: 4px;
+
+            color: #dcebf3;
+        }
+
+
+        .message-time {
+
+            color: #45596c;
+
+            font-size: 7px;
+
+            margin-top: 5px;
+        }
+
+
+        .user-message .message-time {
+
+            text-align: right;
+        }
+
+
+        /* =====================================================
+           TYPING
+        ====================================================== */
+
+        .typing {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 4px;
+
+            padding: 5px 0;
+        }
+
+
+        .typing span {
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #00e5ff;
+
+            animation:
+                typing 1.2s infinite ease-in-out;
+        }
+
+
+        .typing span:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+
+        .typing span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+
+        @keyframes typing {
+
+            0%,
+            60%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+                opacity: 0.4;
+            }
+
+            30% {
+
+                transform:
+                    translateY(-5px);
+
+                opacity: 1;
+            }
+        }
+
+
+        /* =====================================================
+           QUICK QUESTIONS
+        ====================================================== */
+
+        .quick-area {
+
+            padding:
+                0 25px 15px;
+        }
+
+
+        .quick-title {
+
+            color: #4f6375;
+
+            font-size: 7px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .quick-buttons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .quick-btn {
+
+            padding:
+                8px 11px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            color: #718497;
+
+            font-size: 8px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .quick-btn:hover {
+
+            color: #00e5ff;
+
+            border-color:
+                rgba(0,229,255,0.2);
+
+            background:
+                rgba(0,229,255,0.04);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           INPUT
+        ====================================================== */
+
+        .chat-input-area {
+
+            padding:
+                15px 20px 18px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.06);
+        }
+
+
+        .input-wrapper {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            gap: 10px;
+
+            padding:
+                8px 8px 8px 15px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(0,0,0,0.18);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            transition: 0.3s ease;
+        }
+
+
+        .input-wrapper:focus-within {
+
+            border-color:
+                rgba(0,229,255,0.3);
+
+            box-shadow:
+                0 0 25px
+                rgba(0,229,255,0.05);
+        }
+
+
+        #messageInput {
+
+            flex: 1;
+
+            min-height: 38px;
+
+            max-height: 100px;
+
+            resize: none;
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            color: #ffffff;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+
+            padding: 8px 0;
+        }
+
+
+        #messageInput::placeholder {
+            color: #52677a;
+        }
+
+
+        .send-btn {
+
+            width: 40px;
+            height: 40px;
+
+            flex-shrink: 0;
+
+            border: none;
+
+            border-radius: 11px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            color: #021018;
+
+            font-size: 16px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .send-btn:hover {
+
+            transform:
+                translateY(-2px)
+                scale(1.03);
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,229,255,0.18);
+        }
+
+
+        .send-btn:disabled {
+
+            opacity: 0.4;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+            box-shadow: none;
+        }
+
+
+        .privacy-note {
+
+            text-align: center;
+
+            margin-top: 8px;
+
+            color: #3f5264;
+
+            font-size: 7px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .sidebar {
+
+                transform:
+                    translateX(-100%);
+            }
+
+
+            .sidebar.open {
+
+                transform:
+                    translateX(0);
+            }
+
+
+            .main {
+
+                margin-left: 0;
+
+                padding:
+                    25px 4% 40px;
+            }
+
+
+            .mobile-menu {
+
+                display: block;
+            }
+
+
+            .chat-container {
+
+                height:
+                    calc(100vh - 210px);
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .nexus-header {
+
+                padding: 22px;
+            }
+
+
+            .nexus-title-row {
+
+                align-items: flex-start;
+            }
+
+
+            .nexus-logo {
+
+                width: 48px;
+                height: 48px;
+
+                font-size: 23px;
+            }
+
+
+            .ai-status {
+
+                display: none;
+            }
+
+
+            .chat-messages {
+
+                padding: 18px;
+            }
+
+
+            .message-content {
+
+                max-width: 82%;
+            }
+
+
+            .quick-area {
+
+                padding:
+                    0 18px 12px;
+            }
+
+
+            .quick-btn {
+
+                font-size: 7px;
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .page-title {
+
+                font-size: 8px;
+            }
+
+
+            .status {
+
+                display: none;
+            }
+
+
+            .chat-container {
+
+                min-height: 500px;
+            }
+
+
+            .message-bubble {
+
+                font-size: 9px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div class="bg-glow glow-one"></div>
+
+    <div class="bg-glow glow-two"></div>
+
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="logo">
+
+            <span>FOR</span> THEM
+
+        </div>
+
+
+        <div class="menu-label">
+            MAIN
+        </div>
+
+
+        <nav class="nav-menu">
+
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🏠
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+            <a
+                href="self-check.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🧠
+                </span>
+
+                Prevention Self-Check
+
+            </a>
+
+
+            <a
+                href="nexus.html"
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    🤖
+                </span>
+
+                NEXUS AI
+
+            </a>
+
+
+            <a
+                href="prevention-quest.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    🎮
+                </span>
+
+                Prevention Quest
+
+            </a>
+
+
+            <a
+                href="knowledge-hub.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    📚
+                </span>
+
+                Knowledge Hub
+
+            </a>
+
+
+            <a
+                href="support.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ❤️
+                </span>
+
+                Support Center
+
+            </a>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+
+            <div class="user-mini">
+
+                <div
+                    class="avatar"
+                    id="userAvatar"
+                >
+                    U
+                </div>
+
+
+                <div class="user-mini-text">
+
+                    <strong id="sideUserName">
+                        User
+                    </strong>
+
+                    <span>
+                        Prevention Journey
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                onclick="logout()"
+            >
+
+                ↪ Sign Out
+
+            </button>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <div class="topbar">
+
+
+            <div class="top-left">
+
+                <button
+                    class="mobile-menu"
+                    onclick="toggleSidebar()"
+                >
+                    ☰
+                </button>
+
+
+                <span class="page-title">
+                    NEXUS AI • PREVENTION ASSISTANT
+                </span>
+
+            </div>
+
+
+            <div class="top-right">
+
+                <div class="status">
+
+                    <span class="status-dot"></span>
+
+                    SYSTEM ACTIVE
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NEXUS HEADER
+        ================================================== -->
+
+        <section class="nexus-header">
+
+
+            <div class="nexus-title-row">
+
+
+                <div class="nexus-logo">
+                    🤖
+                </div>
+
+
+                <div class="nexus-title">
+
+                    <h1>
+                        Meet <span>NEXUS</span>
+                    </h1>
+
+                    <p>
+                        Your prevention-focused AI companion
+                        for awareness, healthy choices and support.
+                    </p>
+
+                </div>
+
+
+                <div class="ai-status">
+
+                    <span class="status-dot"></span>
+
+                    AI ONLINE
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CHAT
+        ================================================== -->
+
+        <section class="chat-container">
+
+
+            <!-- CHAT HEADER -->
+
+            <div class="chat-top">
+
+
+                <div class="chat-top-left">
+
+
+                    <div class="mini-nexus">
+                        🤖
+                    </div>
+
+
+                    <div class="chat-name">
+
+                        <strong>
+                            NEXUS AI
+                        </strong>
+
+                        <span>
+                            Prevention & Awareness Assistant
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    class="clear-btn"
+                    onclick="clearChat()"
+                >
+
+                    Clear chat
+
+                </button>
+
+            </div>
+
+
+
+            <!-- MESSAGES -->
+
+            <div
+                class="chat-messages"
+                id="chatMessages"
+            >
+
+
+                <!-- INITIAL AI MESSAGE -->
+
+                <div class="message ai-message">
+
+
+                    <div class="message-avatar">
+                        🤖
+                    </div>
+
+
+                    <div class="message-content">
+
+                        <div class="message-bubble">
+
+Hello! I'm NEXUS 🤖
+
+I'm here to help you learn, think through challenges and make healthier choices.
+
+You can ask me about prevention, peer pressure, triggers, healthy habits, supporting someone, or anything related to the FOR THEM journey.
+
+You don't have to figure everything out alone. 💙
+
+                        </div>
+
+
+                        <div class="message-time">
+                            NEXUS • NOW
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUICK QUESTIONS -->
+
+            <div class="quick-area">
+
+                <div class="quick-title">
+                    QUICK QUESTIONS
+                </div>
+
+
+                <div class="quick-buttons">
+
+
+                    <button
+                        class="quick-btn"
+                        onclick="sendQuickQuestion('How can I handle peer pressure?')"
+                    >
+                        🤝 Handle peer pressure
+                    </button>
+
+
+                    <button
+                        class="quick-btn"
+                        onclick="sendQuickQuestion('What are some healthy ways to deal with stress?')"
+                    >
+                        🧘 Deal with stress
+                    </button>
+
+
+                    <button
+                        class="quick-btn"
+                        onclick="sendQuickQuestion('How can I support a friend who is struggling?')"
+                    >
+                        ❤️ Help a friend
+                    </button>
+
+
+                    <button
+                        class="quick-btn"
+                        onclick="sendQuickQuestion('What are common triggers for unhealthy choices?')"
+                    >
+                        🧠 Understand triggers
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INPUT -->
+
+            <div class="chat-input-area">
+
+
+                <div class="input-wrapper">
+
+
+                    <textarea
+                        id="messageInput"
+                        placeholder="Ask NEXUS anything about prevention..."
+                        rows="1"
+                        maxlength="1000"
+                    ></textarea>
+
+
+                    <button
+                        class="send-btn"
+                        id="sendBtn"
+                        onclick="sendMessage()"
+                        aria-label="Send message"
+                    >
+                        ➤
+                    </button>
+
+
+                </div>
+
+
+                <div class="privacy-note">
+
+                    NEXUS provides general prevention information
+                    and is not a replacement for professional help.
+
+                </div>
+                <div id="chatMessages"></div>
+
+<input
+    type="text"
+    id="messageInput"
+    placeholder="Type your message..."
+>
+
+<button id="sendButton">
+    Send
+</button>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        // =====================================================
+        // API URL
+        // =====================================================
+
+        const API_URL =
+            "http://localhost:5000/api/chat";
+
+
+
+        // =====================================================
+        // ELEMENTS
+        // =====================================================
+
+        const messageInput =
+            document.getElementById("messageInput");
+
+
+        const sendBtn =
+            document.getElementById("sendBtn");
+
+
+        const chatMessages =
+            document.getElementById("chatMessages");
+
+
+
+        // =====================================================
+        // LOAD USER
+        // =====================================================
+
+        function loadUser() {
+
+            const userData =
+                localStorage.getItem("forthem_user");
+
+
+            if (!userData) {
+                return;
+            }
+
+
+            try {
+
+                const user =
+                    JSON.parse(userData);
+
+
+                const name =
+                    user.name ||
+                    user.fullName ||
+                    user.username ||
+                    "User";
+
+
+                document.getElementById(
+                    "sideUserName"
+                ).textContent = name;
+
+
+                document.getElementById(
+                    "userAvatar"
+                ).textContent =
+                    name
+                        .trim()
+                        .charAt(0)
+                        .toUpperCase();
+
+            }
+
+            catch (error) {
+
+                console.log(
+                    "User data unavailable."
+                );
+
+            }
+
+        }
+
+
+
+        // =====================================================
+        // SIDEBAR
+        // =====================================================
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList.toggle("open");
+
+        }
+
+
+
+        // =====================================================
+        // LOGOUT
+        // =====================================================
+
+        function logout() {
+
+            localStorage.removeItem(
+                "forthem_user"
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+
+        // =====================================================
+        // GET CURRENT TIME
+        // =====================================================
+
+        function getTime() {
+
+            return new Date().toLocaleTimeString(
+                [],
+                {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+
+        }
+
+
+
+        // =====================================================
+        // ADD MESSAGE
+        // =====================================================
+
+        function addMessage(
+            text,
+            type
+        ) {
+
+            const message =
+                document.createElement("div");
+
+
+            message.className =
+                `message ${type === "user"
+                    ? "user-message"
+                    : "ai-message"}`;
+
+
+            const avatar =
+                document.createElement("div");
+
+
+            avatar.className =
+                "message-avatar";
+
+
+            avatar.textContent =
+                type === "user"
+                    ? getUserInitial()
+                    : "🤖";
+
+
+            const content =
+                document.createElement("div");
+
+
+            content.className =
+                "message-content";
+
+
+            const bubble =
+                document.createElement("div");
+
+
+            bubble.className =
+                "message-bubble";
+
+
+            bubble.textContent =
+                text;
+
+
+            const time =
+                document.createElement("div");
+
+
+            time.className =
+                "message-time";
+
+
+            time.textContent =
+                type === "user"
+                    ? `YOU • ${getTime()}`
+                    : `NEXUS • ${getTime()}`;
+
+
+            content.appendChild(bubble);
+
+            content.appendChild(time);
+
+
+            message.appendChild(avatar);
+
+            message.appendChild(content);
+
+
+            chatMessages.appendChild(message);
+
+
+            scrollToBottom();
+
+        }
+
+
+
+        // =====================================================
+        // USER INITIAL
+        // =====================================================
+
+        function getUserInitial() {
+
+            const userData =
+                localStorage.getItem(
+                    "forthem_user"
+                );
+
+
+            if (!userData) {
+                return "U";
+            }
+
+
+            try {
+
+                const user =
+                    JSON.parse(userData);
+
+
+                const name =
+                    user.name ||
+                    user.fullName ||
+                    user.username ||
+                    "User";
+
+
+                return name
+                    .trim()
+                    .charAt(0)
+                    .toUpperCase();
+
+            }
+
+            catch {
+
+                return "U";
+
+            }
+
+        }
+
+
+
+        // =====================================================
+        // TYPING INDICATOR
+        // =====================================================
+
+        function showTyping() {
+
+            const message =
+                document.createElement("div");
+
+
+            message.className =
+                "message ai-message";
+
+
+            message.id =
+                "typingMessage";
+
+
+            message.innerHTML = `
+
+                <div class="message-avatar">
+                    🤖
+                </div>
+
+                <div class="message-content">
+
+                    <div class="message-bubble">
+
+                        <div class="typing">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            chatMessages.appendChild(message);
+
+
+            scrollToBottom();
+
+        }
+
+
+
+        // =====================================================
+        // REMOVE TYPING
+        // =====================================================
+
+        function removeTyping() {
+
+            const typing =
+                document.getElementById(
+                    "typingMessage"
+                );
+
+
+            if (typing) {
+
+                typing.remove();
+
+            }
+
+        }
+
+
+
+        // =====================================================
+        // SCROLL
+        // =====================================================
+
+        function scrollToBottom() {
+
+            chatMessages.scrollTop =
+                chatMessages.scrollHeight;
+
+        }
+
+
+
+        // =====================================================
+        // SEND MESSAGE
+        // =====================================================
+
+        async function sendMessage() {
+
+            const message =
+                messageInput.value.trim();
+
+
+            if (!message) {
+                return;
+            }
+
+
+            // Add user message
+
+            addMessage(
+                message,
+                "user"
+            );
+
+
+            // Clear input
+
+            messageInput.value = "";
+
+
+            // Reset textarea
+
+            messageInput.style.height =
+                "auto";
+
+
+            // Disable button
+
+            sendBtn.disabled = true;
+
+
+            // Show typing
+
+            showTyping();
+
+
+            try {
+
+
+                const response =
+                    await fetch(
+                        API_URL,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    message:
+                                        message
+
+                                })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                removeTyping();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Server error"
+                    );
+
+                }
+
+
+                if (
+                    !data.success ||
+                    !data.reply
+                ) {
+
+                    throw new Error(
+                        "Invalid NEXUS response"
+                    );
+
+                }
+
+
+                addMessage(
+                    data.reply,
+                    "ai"
+                );
+
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "NEXUS ERROR:",
+                    error
+                );
+
+
+                removeTyping();
+
+
+                addMessage(
+
+                    "I'm having trouble connecting right now. Please make sure the FOR THEM server is running and try again. 💙",
+
+                    "ai"
+
+                );
+
+            }
+
+
+            finally {
+
+                sendBtn.disabled = false;
+
+                messageInput.focus();
+
+            }
+
+        }
+
+
+
+        // =====================================================
+        // QUICK QUESTION
+        // =====================================================
+
+        function sendQuickQuestion(
+            question
+        ) {
+
+            messageInput.value =
+                question;
+
+
+            sendMessage();
+
+        }
+
+
+
+        // =====================================================
+        // ENTER TO SEND
+        // =====================================================
+
+        messageInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter" &&
+                    !event.shiftKey
+                ) {
+
+                    event.preventDefault();
+
+                    sendMessage();
+
+                }
+
+            }
+        );
+
+
+
+        // =====================================================
+        // AUTO RESIZE TEXTAREA
+        // =====================================================
+
+        messageInput.addEventListener(
+            "input",
+            function() {
+
+                this.style.height =
+                    "auto";
+
+                this.style.height =
+                    Math.min(
+                        this.scrollHeight,
+                        100
+                    ) + "px";
+
+            }
+        );
+
+
+
+        // =====================================================
+        // CLEAR CHAT
+        // =====================================================
+
+        function clearChat() {
+
+            chatMessages.innerHTML = "";
+
+
+            addMessage(
+
+                "Chat cleared. I'm still here whenever you need support. 💙",
+
+                "ai"
+
+            );
+
+        }
+
+
+
+        // =====================================================
+        // INITIALIZE
+        // =====================================================
+
+        loadUser();
+
+        messageInput.focus();
+
+
+    </script>
+    <script src="chatbot.js"></script>
+
+</body>
+
+</html>

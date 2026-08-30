@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FOR THEM - Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #071426,
+                    #0d2747,
+                    #123b63,
+                    #071426
+                );
+
+            background-size: 400% 400%;
+            animation: backgroundMove 12s ease infinite;
+
+            color: white;
+        }
+
+        @keyframes backgroundMove {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 450px;
+
+            padding: 40px;
+
+            background: rgba(255, 255, 255, 0.07);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 25px;
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo h1 {
+            font-size: 38px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00c3ff,
+                    #00ff9d
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #b8c7d9;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border-radius: 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            background: rgba(0, 0, 0, 0.25);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #00c3ff;
+
+            box-shadow:
+                0 0 10px rgba(0, 195, 255, 0.25);
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+        .password-box input {
+            padding-right: 50px;
+        }
+
+        #passwordToggle {
+            position: absolute;
+
+            right: 12px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            background: transparent;
+
+            border: none;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 20px;
+        }
+
+        .forgot {
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .forgot a {
+            color: #00c3ff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 10px;
+
+            border: none;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00c3ff,
+                    #00ff9d
+                );
+
+            color: #00111f;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 25px rgba(0, 255, 157, 0.25);
+        }
+
+        .message {
+            display: none;
+
+            padding: 12px;
+
+            margin-bottom: 15px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        #errorMessage {
+            background: rgba(255, 60, 60, 0.15);
+            border: 1px solid rgba(255, 60, 60, 0.4);
+            color: #ff8c8c;
+        }
+
+        #successMessage {
+            background: rgba(0, 255, 157, 0.12);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            color: #00ff9d;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+
+            color: #b8c7d9;
+        }
+
+        .signup-link a {
+            color: #00c3ff;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <div class="login-container">
+
+
+        <div class="logo">
+
+            <h1>FOR THEM</h1>
+
+        </div>
+
+
+        <p class="subtitle">
+            Welcome back. We're glad you're here.
+        </p>
+
+
+        <!-- =========================
+             LOGIN FORM
+        ========================== -->
+
+        <form id="loginForm">
+
+
+            <!-- ERROR -->
+
+            <div
+                id="errorMessage"
+                class="message">
+            </div>
+
+
+            <!-- SUCCESS -->
+
+            <div
+                id="successMessage"
+                class="message">
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    📧 Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    🔐 Password
+                </label>
+
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required>
+
+
+                    <button
+                        type="button"
+                        id="passwordToggle"
+                        aria-label="Show password">
+
+                        👁
+
+                    </button>
+
+                </div>
+
+
+                <div class="forgot">
+
+                    <a
+                        href="#"
+                        id="forgotPassword">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="submit"
+                class="login-btn">
+
+                LOGIN
+
+            </button>
+
+
+        </form>
+
+
+        <!-- SIGNUP -->
+
+        <div class="signup-link">
+
+            Don't have an account?
+
+            <a href="signup.html">
+                Sign Up
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+
+        /* =====================================================
+           BACKEND URL
+        ===================================================== */
+
+
+        /*
+         * LOCAL TESTING
+         *
+         * Use this while your Node server is running
+         * on your computer.
+         */
+
+        const API_URL =
+            "http://localhost:5000";
+
+
+        /*
+         * AFTER DEPLOYING BACKEND TO RENDER
+         *
+         * CHANGE THE ABOVE LINE TO:
+         *
+         * const API_URL =
+         * "https://your-backend-name.onrender.com";
+         *
+         */
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+
+        const email =
+            document.getElementById("email");
+
+
+        const password =
+            document.getElementById("password");
+
+
+        const passwordToggle =
+            document.getElementById("passwordToggle");
+
+
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        const forgotPassword =
+            document.getElementById("forgotPassword");
+
+
+        /* =====================================================
+           PASSWORD SHOW / HIDE
+        ===================================================== */
+
+
+        passwordToggle.addEventListener(
+            "click",
+            function () {
+
+
+                if (password.type === "password") {
+
+
+                    password.type = "text";
+
+
+                    passwordToggle.textContent =
+                        "🙈";
+
+
+                    passwordToggle.setAttribute(
+                        "aria-label",
+                        "Hide password"
+                    );
+
+
+                } else {
+
+
+                    password.type = "password";
+
+
+                    passwordToggle.textContent =
+                        "👁";
+
+
+                    passwordToggle.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           LOGIN
+        ===================================================== */
+
+
+        loginForm.addEventListener(
+            "submit",
+            async function (event) {
+
+
+                event.preventDefault();
+
+
+                /* Clear previous messages */
+
+                errorMessage.classList.remove(
+                    "show"
+                );
+
+                successMessage.classList.remove(
+                    "show"
+                );
+
+
+                errorMessage.textContent =
+                    "";
+
+                successMessage.textContent =
+                    "";
+
+
+                /* Get values */
+
+                const emailValue =
+                    email.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const passwordValue =
+                    password.value;
+
+
+                /* =================================================
+                   VALIDATION
+                ================================================= */
+
+
+                if (!emailValue) {
+
+                    showError(
+                        "Please enter your email address."
+                    );
+
+                    email.focus();
+
+                    return;
+
+                }
+
+
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (
+                    !emailPattern.test(
+                        emailValue
+                    )
+                ) {
+
+                    showError(
+                        "Please enter a valid email address."
+                    );
+
+                    email.focus();
+
+                    return;
+
+                }
+
+
+                if (!passwordValue) {
+
+                    showError(
+                        "Please enter your password."
+                    );
+
+                    password.focus();
+
+                    return;
+
+                }
+
+
+                /* =================================================
+                   CONNECTING
+                ================================================= */
+
+
+                successMessage.textContent =
+                    "Signing you in...";
+
+
+                successMessage.classList.add(
+                    "show"
+                );
+
+
+                try {
+
+
+                    console.log(
+                        "Connecting to:",
+                        API_URL
+                    );
+
+
+                    /* =================================================
+                       CALL BACKEND
+                    ================================================= */
+
+
+                    const response =
+                        await fetch(
+                            `${API_URL}/login`,
+                            {
+
+                                method: "POST",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json"
+
+                                },
+
+                                body:
+                                    JSON.stringify({
+
+                                        email:
+                                            emailValue,
+
+                                        password:
+                                            passwordValue
+
+                                    })
+
+                            }
+                        );
+
+
+                    /* =================================================
+                       READ RESPONSE
+                    ================================================= */
+
+
+                    const data =
+                        await response.json();
+
+
+                    console.log(
+                        "Backend response:",
+                        data
+                    );
+
+
+                    /* =================================================
+                       LOGIN FAILED
+                    ================================================= */
+
+
+                    if (
+                        !response.ok ||
+                        !data.success
+                    ) {
+
+
+                        successMessage.classList.remove(
+                            "show"
+                        );
+
+
+                        showError(
+                            data.message ||
+                            "Invalid email or password."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    /* =================================================
+                       LOGIN SUCCESS
+                    ================================================= */
+
+
+                    console.log(
+                        "✅ Login successful:",
+                        data.user
+                    );
+
+
+                    /* =================================================
+                       SAVE USER
+                    ================================================= */
+
+
+                    localStorage.setItem(
+                        "forthem_user",
+                        JSON.stringify(
+                            data.user
+                        )
+                    );
+
+
+                    localStorage.setItem(
+                        "forthem_logged_in",
+                        "true"
+                    );
+
+
+                    localStorage.setItem(
+                        "userName",
+                        data.user.name
+                    );
+
+
+                    localStorage.setItem(
+                        "userEmail",
+                        data.user.email
+                    );
+
+
+                    localStorage.setItem(
+                        "userId",
+                        data.user.id
+                    );
+
+
+                    /* =================================================
+                       SUCCESS MESSAGE
+                    ================================================= */
+
+
+                    successMessage.textContent =
+                        `Welcome back, ${data.user.name}!`;
+
+
+                    successMessage.classList.add(
+                        "show"
+                    );
+
+
+                    /* =================================================
+                       GO TO DASHBOARD
+                    ================================================= */
+
+
+                    setTimeout(
+                        function () {
+
+
+                            window.location.href =
+                                "dashboard.html";
+
+
+                        },
+                        700
+                    );
+
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(
+                        "❌ Login connection error:",
+                        error
+                    );
+
+
+                    successMessage.classList.remove(
+                        "show"
+                    );
+
+
+                    showError(
+                        "Cannot connect to the server. Please make sure the backend is running."
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           ERROR FUNCTION
+        ===================================================== */
+
+
+        function showError(message) {
+
+
+            errorMessage.textContent =
+                message;
+
+
+            errorMessage.classList.add(
+                "show"
+            );
+
+        }
+
+
+        /* =====================================================
+           FORGOT PASSWORD
+        ===================================================== */
+
+
+        forgotPassword.addEventListener(
+            "click",
+            function (event) {
+
+
+                event.preventDefault();
+
+
+                alert(
+                    "Password recovery will be connected soon."
+                );
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

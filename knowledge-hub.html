@@ -1,0 +1,2582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FOR THEM | Knowledge Hub</title>
+
+    <style>
+
+        @import url(
+            'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap'
+        );
+
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background:
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(0,229,255,.08),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(58,123,255,.08),
+                    transparent 25%
+                ),
+                #030b15;
+
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           BACKGROUND PARTICLES
+        ========================= */
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #00e5ff;
+            border-radius: 50%;
+            opacity: .35;
+            animation: floatParticle 10s linear infinite;
+        }
+
+        .particle:nth-child(1) {
+            left: 10%;
+            top: 80%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            left: 25%;
+            top: 60%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(3) {
+            left: 45%;
+            top: 90%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(4) {
+            left: 65%;
+            top: 70%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(5) {
+            left: 80%;
+            top: 85%;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(6) {
+            left: 90%;
+            top: 50%;
+            animation-delay: 5s;
+        }
+
+        @keyframes floatParticle {
+
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: .4;
+            }
+
+            80% {
+                opacity: .4;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background:
+                rgba(2,10,19,.82);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid
+                rgba(0,229,255,.08);
+        }
+
+
+        .logo {
+            font-family: "Poppins", sans-serif;
+            font-size: 19px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #00e5ff;
+            text-shadow:
+                0 0 18px
+                rgba(0,229,255,.5);
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #8fa4b7;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #00e5ff;
+        }
+
+
+        .dashboard-btn {
+            padding:
+                10px 17px;
+
+            border-radius:
+                10px;
+
+            text-decoration: none;
+
+            color:
+                #001016 !important;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00e5ff,
+                    #00ffb3
+                ) !important;
+
+            font-weight:
+                800 !important;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 500px;
+
+            padding:
+                110px 7% 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 60px;
+
+            max-width: 1250px;
+
+            margin: auto;
+        }
+
+
+        .hero-text {
+            max-width: 680px;
+
+            animation:
+                heroLeft 1s ease forwards;
+        }
+
+
+        @keyframes heroLeft {
+
+            from {
+                opacity: 0;
+                transform: translateX(-35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+
+        .eyebrow {
+            color: #00e5ff;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 18px;
+        }
+
+
+        .hero h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 1;
+            letter-spacing: -3px;
+        }
+
+
+        .hero h1 span {
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .hero p {
+            margin-top: 25px;
+            max-width: 600px;
+
+            color: #8fa1b4;
+
+            line-height: 1.9;
+
+            font-size: 14px;
+        }
+
+
+        .hero-quote {
+            margin-top: 25px;
+
+            padding-left: 18px;
+
+            border-left:
+                2px solid
+                #00e5ff;
+
+            color: #b9c9d7;
+
+            font-size: 13px;
+
+            font-style: italic;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           HERO VISUAL
+        ========================= */
+
+        .knowledge-orb {
+            width: 260px;
+            height: 260px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,229,255,.18),
+                    rgba(0,229,255,.03) 45%,
+                    transparent 70%
+                );
+
+            border:
+                1px solid
+                rgba(0,229,255,.22);
+
+            box-shadow:
+                0 0 80px
+                rgba(0,229,255,.1);
+
+            animation:
+                orbPulse 4s ease-in-out infinite;
+        }
+
+
+        .knowledge-orb::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 20px;
+
+            border-radius: 50%;
+
+            border:
+                1px dashed
+                rgba(0,229,255,.25);
+
+            animation:
+                rotateOrb 15s linear infinite;
+        }
+
+
+        .knowledge-orb::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 45px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(0,255,179,.25);
+
+            animation:
+                rotateOrbReverse 10s linear infinite;
+        }
+
+
+        .orb-icon {
+            font-size: 65px;
+            z-index: 2;
+
+            filter:
+                drop-shadow(
+                    0 0 18px
+                    rgba(0,229,255,.7)
+                );
+        }
+
+
+        @keyframes orbPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+
+        @keyframes rotateOrb {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        @keyframes rotateOrbReverse {
+
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-section {
+            padding: 0 7% 70px;
+        }
+
+
+        .search-box {
+            max-width: 850px;
+            margin: auto;
+
+            position: relative;
+        }
+
+
+        .search-box input {
+            width: 100%;
+
+            padding:
+                18px 55px 18px 22px;
+
+            border-radius:
+                15px;
+
+            border:
+                1px solid
+                rgba(0,229,255,.16);
+
+            outline: none;
+
+            background:
+                rgba(255,255,255,.045);
+
+            backdrop-filter:
+                blur(15px);
+
+            color: white;
+
+            font-size: 13px;
+
+            transition: .3s;
+        }
+
+
+        .search-box input:focus {
+            border-color:
+                rgba(0,229,255,.55);
+
+            box-shadow:
+                0 0 25px
+                rgba(0,229,255,.08);
+        }
+
+
+        .search-box input::placeholder {
+            color: #607589;
+        }
+
+
+        .search-icon {
+            position: absolute;
+
+            right: 20px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            font-size: 20px;
+
+            color: #00e5ff;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        section {
+            padding:
+                80px 7%;
+        }
+
+
+        .section-heading {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        .section-heading span {
+            color: #00e5ff;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+
+        .section-heading h2 {
+            margin-top: 12px;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size:
+                clamp(30px,4vw,45px);
+        }
+
+
+        .section-heading p {
+            margin-top: 12px;
+
+            color: #8194a7;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+            max-width: 650px;
+        }
+
+
+        /* =========================
+           CATEGORY BUTTONS
+        ========================= */
+
+        .categories {
+            max-width: 1100px;
+
+            margin:
+                35px auto 0;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .category {
+            padding:
+                10px 17px;
+
+            border-radius:
+                30px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            background:
+                rgba(255,255,255,.03);
+
+            color:
+                #8ea2b5;
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            transition:
+                .3s;
+        }
+
+
+        .category:hover,
+        .category.active {
+            color:
+                #001016;
+
+            background:
+                #00e5ff;
+
+            border-color:
+                #00e5ff;
+
+            box-shadow:
+                0 0 20px
+                rgba(0,229,255,.18);
+        }
+
+
+        /* =========================
+           KNOWLEDGE CARDS
+        ========================= */
+
+        .knowledge-grid {
+            max-width: 1100px;
+
+            margin:
+                40px auto 0;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                20px;
+        }
+
+
+        .knowledge-card {
+            position:
+                relative;
+
+            padding:
+                28px;
+
+            min-height:
+                270px;
+
+            border-radius:
+                20px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,.075);
+
+            overflow:
+                hidden;
+
+            transition:
+                transform .4s ease,
+                border-color .4s ease,
+                background .4s ease;
+
+            animation:
+                cardAppear .7s ease both;
+        }
+
+
+        .knowledge-card:nth-child(2) {
+            animation-delay:
+                .1s;
+        }
+
+        .knowledge-card:nth-child(3) {
+            animation-delay:
+                .2s;
+        }
+
+        .knowledge-card:nth-child(4) {
+            animation-delay:
+                .3s;
+        }
+
+        .knowledge-card:nth-child(5) {
+            animation-delay:
+                .4s;
+        }
+
+        .knowledge-card:nth-child(6) {
+            animation-delay:
+                .5s;
+        }
+
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        .knowledge-card::before {
+            content: "";
+
+            position:
+                absolute;
+
+            width:
+                120px;
+
+            height:
+                120px;
+
+            right:
+                -50px;
+
+            top:
+                -50px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(0,229,255,.06);
+
+            transition:
+                .4s;
+        }
+
+
+        .knowledge-card:hover {
+            transform:
+                translateY(-9px);
+
+            border-color:
+                rgba(0,229,255,.35);
+
+            background:
+                rgba(0,229,255,.045);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.25);
+        }
+
+
+        .knowledge-card:hover::before {
+            transform:
+                scale(1.5);
+        }
+
+
+        .card-icon {
+            width:
+                52px;
+
+            height:
+                52px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(0,229,255,.08);
+
+            border:
+                1px solid
+                rgba(0,229,255,.15);
+
+            font-size:
+                25px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .tag {
+            color:
+                #00e5ff;
+
+            font-size:
+                9px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1.5px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .knowledge-card h3 {
+            margin:
+                9px 0 12px;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size:
+                20px;
+        }
+
+
+        .knowledge-card p {
+            color:
+                #8296a9;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.8;
+        }
+
+
+        .read-more {
+            display:
+                inline-block;
+
+            margin-top:
+                18px;
+
+            color:
+                #00e5ff;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            cursor:
+                pointer;
+
+            transition:
+                .3s;
+        }
+
+
+        .knowledge-card:hover .read-more {
+            transform:
+                translateX(6px);
+        }
+
+
+        /* =========================
+           FACT SECTION
+        ========================= */
+
+        .facts-section {
+            background:
+                #06121f;
+        }
+
+
+        .facts-grid {
+            max-width:
+                1100px;
+
+            margin:
+                45px auto 0;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap:
+                16px;
+        }
+
+
+        .fact {
+            padding:
+                28px 22px;
+
+            border-radius:
+                18px;
+
+            text-align:
+                center;
+
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            transition:
+                .35s;
+        }
+
+
+        .fact:hover {
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(0,229,255,.3);
+        }
+
+
+        .fact-icon {
+            font-size:
+                30px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .fact h3 {
+            color:
+                #00e5ff;
+
+            font-size:
+                25px;
+
+            margin-bottom:
+                8px;
+        }
+
+
+        .fact p {
+            color:
+                #8296a9;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =========================
+           PREVENTION GUIDE
+        ========================= */
+
+        .guide {
+            max-width:
+                1100px;
+
+            margin:
+                50px auto 0;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap:
+                18px;
+        }
+
+
+        .guide-item {
+            padding:
+                25px;
+
+            border-radius:
+                18px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            display:
+                flex;
+
+            gap:
+                18px;
+
+            transition:
+                .3s;
+        }
+
+
+        .guide-item:hover {
+            border-color:
+                rgba(0,229,255,.3);
+
+            transform:
+                translateX(5px);
+        }
+
+
+        .guide-number {
+            width:
+                38px;
+
+            height:
+                38px;
+
+            flex-shrink:
+                0;
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                rgba(0,229,255,.08);
+
+            border:
+                1px solid
+                rgba(0,229,255,.2);
+
+            color:
+                #00e5ff;
+
+            font-size:
+                12px;
+
+            font-weight:
+                900;
+        }
+
+
+        .guide-item h3 {
+            font-size:
+                15px;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .guide-item p {
+            color:
+                #8296a9;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =========================
+           QUOTE BANNER
+        ========================= */
+
+        .quote-banner {
+            padding:
+                100px 20px;
+
+            text-align:
+                center;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(0,229,255,.1),
+                    transparent 55%
+                );
+        }
+
+
+        .quote-symbol {
+            color:
+                #00e5ff;
+
+            font-size:
+                65px;
+
+            line-height:
+                .4;
+        }
+
+
+        .quote-banner h2 {
+            max-width:
+                800px;
+
+            margin:
+                25px auto 15px;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size:
+                clamp(28px,4vw,45px);
+
+            line-height:
+                1.25;
+        }
+
+
+        .quote-banner h2 span {
+            color:
+                #00e5ff;
+        }
+
+
+        .quote-banner p {
+            max-width:
+                650px;
+
+            margin:
+                auto;
+
+            color:
+                #8296a9;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.8;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding:
+                40px 7%;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.06);
+
+            background:
+                #020914;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            gap:
+                20px;
+        }
+
+
+        footer p {
+            color:
+                #617487;
+
+            font-size:
+                10px;
+        }
+
+
+        footer span {
+            color:
+                #00e5ff;
+        }
+
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            z-index:
+                2000;
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            background:
+                rgba(0,0,0,.72);
+
+            backdrop-filter:
+                blur(10px);
+        }
+
+
+        .modal.show {
+            display:
+                flex;
+        }
+
+
+        .modal-content {
+            width:
+                min(650px,95%);
+
+            max-height:
+                80vh;
+
+            overflow:
+                auto;
+
+            padding:
+                35px;
+
+            border-radius:
+                22px;
+
+            background:
+                #071522;
+
+            border:
+                1px solid
+                rgba(0,229,255,.2);
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.6);
+
+            animation:
+                modalIn .4s ease;
+        }
+
+
+        @keyframes modalIn {
+
+            from {
+                opacity: 0;
+                transform:
+                    scale(.94)
+                    translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    scale(1)
+                    translateY(0);
+            }
+        }
+
+
+        .modal-content h2 {
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .modal-content h2 span {
+            color:
+                #00e5ff;
+        }
+
+
+        .modal-content p {
+            color:
+                #8fa1b4;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.9;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .close-btn {
+            margin-top:
+                10px;
+
+            padding:
+                11px 22px;
+
+            border:
+                none;
+
+            border-radius:
+                10px;
+
+            background:
+                #00e5ff;
+
+            color:
+                #001016;
+
+            font-weight:
+                800;
+
+            cursor:
+                pointer;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width:900px) {
+
+            .hero {
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+
+            .knowledge-orb {
+                width:
+                    190px;
+
+                height:
+                    190px;
+
+                align-self:
+                    center;
+            }
+
+            .knowledge-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .facts-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .guide {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .nav-links a:not(.dashboard-btn) {
+                display:
+                    none;
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            nav {
+                padding:
+                    0 5%;
+            }
+
+            .hero {
+                padding:
+                    80px 5% 60px;
+            }
+
+            section {
+                padding:
+                    65px 5%;
+            }
+
+            .search-section {
+                padding:
+                    0 5% 50px;
+            }
+
+            .knowledge-grid,
+            .facts-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .hero h1 {
+                letter-spacing:
+                    -2px;
+            }
+
+            footer {
+                flex-direction:
+                    column;
+
+                text-align:
+                    center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PARTICLES
+===================================================== -->
+
+<div class="particles">
+
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+</div>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav>
+
+    <div class="logo">
+        FOR <span>THEM</span>
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="self-check.html">
+            Self-Check
+        </a>
+
+        <a href="knowledge-hub.html" class="active">
+            Knowledge
+        </a>
+
+        <a href="prevention-quest.html">
+            Quest
+        </a>
+
+        <a href="support.html">
+            Support
+        </a>
+
+        <a href="dashboard.html"
+           class="dashboard-btn">
+            Dashboard
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+
+    <div class="hero-text">
+
+        <div class="eyebrow">
+            FOR THEM • KNOWLEDGE HUB
+        </div>
+
+
+        <h1>
+
+            KNOWLEDGE<br>
+
+            <span>CHANGES LIVES.</span>
+
+        </h1>
+
+
+        <p>
+
+            Understanding addiction is one of the
+            first steps toward prevention.
+
+            Explore reliable educational information,
+            prevention strategies, warning signs,
+            healthy choices and ways to support yourself
+            or someone you care about.
+
+        </p>
+
+
+        <div class="hero-quote">
+
+            “The more you understand,
+            the stronger your choices become.”
+
+        </div>
+
+    </div>
+
+
+    <div class="knowledge-orb">
+
+        <div class="orb-icon">
+            🧠
+        </div>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<div class="search-section">
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search addiction, prevention, warning signs, recovery..."
+            onkeyup="searchKnowledge()"
+        >
+
+        <div class="search-icon">
+            ⌕
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     EXPLORE KNOWLEDGE
+===================================================== -->
+
+<section>
+
+
+    <div class="section-heading">
+
+        <span>
+            EXPLORE
+        </span>
+
+        <h2>
+            Learn. Understand. Prevent.
+        </h2>
+
+        <p>
+            Explore different areas of knowledge
+            designed to help you recognize risks,
+            make informed decisions and build
+            healthier habits.
+        </p>
+
+    </div>
+
+
+    <!-- CATEGORY FILTER -->
+
+    <div class="categories">
+
+        <button
+            class="category active"
+            onclick="filterCards('all', this)"
+        >
+            ALL
+        </button>
+
+        <button
+            class="category"
+            onclick="filterCards('basics', this)"
+        >
+            BASICS
+        </button>
+
+        <button
+            class="category"
+            onclick="filterCards('warning', this)"
+        >
+            WARNING SIGNS
+        </button>
+
+        <button
+            class="category"
+            onclick="filterCards('prevention', this)"
+        >
+            PREVENTION
+        </button>
+
+        <button
+            class="category"
+            onclick="filterCards('recovery', this)"
+        >
+            RECOVERY
+        </button>
+
+    </div>
+
+
+    <!-- CARDS -->
+
+    <div class="knowledge-grid" id="knowledgeGrid">
+
+
+        <!-- CARD 1 -->
+
+        <article
+            class="knowledge-card"
+            data-category="basics"
+            data-search="addiction basics understanding substance addiction"
+        >
+
+            <div class="card-icon">
+                🧠
+            </div>
+
+            <span class="tag">
+                BASICS
+            </span>
+
+            <h3>
+                Understanding Addiction
+            </h3>
+
+            <p>
+                Learn what addiction means,
+                why repeated substance use can become
+                difficult to control and how it can affect
+                everyday life.
+            </p>
+
+            <div
+                class="read-more"
+                onclick="openArticle('Understanding Addiction')"
+            >
+                READ MORE →
+            </div>
+
+        </article>
+
+
+        <!-- CARD 2 -->
+
+        <article
+            class="knowledge-card"
+            data-category="basics"
+            data-search="drugs substance effects brain body"
+        >
+
+            <div class="card-icon">
+                🧬
+            </div>
+
+            <span class="tag">
+                BASICS
+            </span>
+
+            <h3>
+                Drugs & The Brain
+            </h3>
+
+            <p>
+                Understand how addictive substances
+                can influence the brain, emotions,
+                decision-making and behavior.
+            </p>
+
+            <div
+                class="read-more"
+                onclick="openArticle('Drugs & The Brain')"
+            >
+                READ MORE →
+            </div>
+
+        </article>
+
+
+        <!-- CARD 3 -->
+
+        <article
+            class="knowledge-card"
+            data-category="warning"
+            data-search="warning signs addiction behavior changes"
+        >
+
+            <div class="card-icon">
+                ⚠️
+            </div>
+
+            <span class="tag">
+                WARNING SIGNS
+            </span>
+
+            <h3>
+                Warning Signs
+            </h3>
+
+            <p>
+                Learn about possible changes in behavior,
+                relationships, responsibilities and
+                daily routines that may indicate a problem.
+            </p>
+
+            <div
+                class="read-more"
+                onclick="openArticle('Warning Signs')"
+            >
+                READ MORE →
+            </div>
+
+        </article>
+
+
+        <!-- CARD 4 -->
+
+        <article
+            class="knowledge-card"
+            data-category="prevention"
+            data-search="prevention healthy choices peer pressure"
+        >
+
+            <div class="card-icon">
+                🛡️
+            </div>
+
+            <span class="tag">
+                PREVENTION
+            </span>
+
+            <h3>
+                Prevention Strategies
+            </h3>
+
+            <p>
+                Discover practical ways to handle
+                pressure, identify risky situations,
+                build healthy routines and protect
+                your future.
+            </p>
+
+            <div
+                class="read-more"
+                onclick="openArticle('Prevention Strategies')"
+            >
+                READ MORE →
+            </div>
+
+        </article>
+
+
+        <!-- CARD 5 -->
+
+        <article
+            class="knowledge-card"
+            data-category="prevention"
+            data-search="peer pressure saying no friends prevention"
+        >
+
+            <div class="card-icon">
+                🤝
+            </div>
+
+            <span class="tag">
+                PREVENTION
+            </span>
+
+            <h3>
+                Handling Peer Pressure
+            </h3>
+
+            <p>
+                Learn how to set boundaries,
+                respond confidently to pressure
+                and choose relationships that support
+                healthy decisions.
+            </p>
+
+            <div
+                class="read-more"
+                onclick="openArticle('Handling Peer Pressure')"
+            >
+                READ MORE →
+            </div>
+
+        </article>
+
+
+        <!-- CARD 6 -->
+
+        <article
+            class="knowledge-card"
+            data-category="recovery"
+            data-search="recovery support help relapse healthy recovery"
+        >
+
+            <div class="card-icon">
+                ❤️
+            </div>
+
+            <span class="tag">
+                RECOVERY
+            </span>
+
+            <h3>
+                Recovery & Support
+            </h3>
+
+            <p>
+                Recovery is a journey. Learn why
+                asking for help, building support systems
+                and taking small positive steps matter.
+            </p>
+
+            <div
+                class="read-more"
+                onclick="openArticle('Recovery & Support')"
+            >
+                READ MORE →
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUICK FACTS
+===================================================== -->
+
+<section class="facts-section">
+
+
+    <div class="section-heading">
+
+        <span>
+            KNOWLEDGE SNAPSHOT
+        </span>
+
+        <h2>
+            Small facts. Big awareness.
+        </h2>
+
+        <p>
+            Prevention begins with understanding
+            the choices and situations around us.
+        </p>
+
+    </div>
+
+
+    <div class="facts-grid">
+
+
+        <div class="fact">
+
+            <div class="fact-icon">
+                🧠
+            </div>
+
+            <h3>
+                THINK
+            </h3>
+
+            <p>
+                Pause before making decisions
+                that could affect your future.
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="fact-icon">
+                🛡️
+            </div>
+
+            <h3>
+                PREVENT
+            </h3>
+
+            <p>
+                Recognize risky situations
+                and choose safer alternatives.
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="fact-icon">
+                💬
+            </div>
+
+            <h3>
+                TALK
+            </h3>
+
+            <p>
+                Honest conversations can make
+                asking for help easier.
+            </p>
+
+        </div>
+
+
+        <div class="fact">
+
+            <div class="fact-icon">
+                ❤️
+            </div>
+
+            <h3>
+                SUPPORT
+            </h3>
+
+            <p>
+                Nobody has to face difficult
+                situations completely alone.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PREVENTION GUIDE
+===================================================== -->
+
+<section>
+
+
+    <div class="section-heading">
+
+        <span>
+            PREVENTION GUIDE
+        </span>
+
+        <h2>
+            Build your prevention mindset.
+        </h2>
+
+        <p>
+            Simple actions can help create stronger
+            habits, healthier relationships and
+            better decision-making.
+        </p>
+
+    </div>
+
+
+    <div class="guide">
+
+
+        <div class="guide-item">
+
+            <div class="guide-number">
+                01
+            </div>
+
+            <div>
+
+                <h3>
+                    Know your triggers
+                </h3>
+
+                <p>
+                    Become aware of situations,
+                    emotions or environments that
+                    may influence risky decisions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="guide-item">
+
+            <div class="guide-number">
+                02
+            </div>
+
+            <div>
+
+                <h3>
+                    Build healthy routines
+                </h3>
+
+                <p>
+                    Physical activity, hobbies,
+                    meaningful goals and positive
+                    relationships can strengthen wellbeing.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="guide-item">
+
+            <div class="guide-number">
+                03
+            </div>
+
+            <div>
+
+                <h3>
+                    Learn to say no
+                </h3>
+
+                <p>
+                    A clear and confident response can
+                    help you maintain your boundaries
+                    when facing pressure.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="guide-item">
+
+            <div class="guide-number">
+                04
+            </div>
+
+            <div>
+
+                <h3>
+                    Ask for support
+                </h3>
+
+                <p>
+                    Reaching out to someone you trust
+                    can be an important step when a
+                    situation feels difficult.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUOTE
+===================================================== -->
+
+<section class="quote-banner">
+
+
+    <div class="quote-symbol">
+        “
+    </div>
+
+
+    <h2>
+
+        Your future is worth
+        <span>protecting.</span>
+
+    </h2>
+
+
+    <p>
+
+        Prevention is not about fear.
+
+        It is about awareness, confidence,
+        informed choices and knowing that
+        support is available when you need it.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        © 2026 <span>FOR THEM</span>
+        • Prevention starts with awareness.
+    </p>
+
+
+    <p>
+        Learn • Prevent • Support • Recover
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     ARTICLE MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="articleModal"
+    onclick="closeOutside(event)"
+>
+
+
+    <div
+        class="modal-content"
+        onclick="event.stopPropagation()"
+    >
+
+        <h2 id="modalTitle">
+            Knowledge
+            <span>Article</span>
+        </h2>
+
+
+        <div id="modalBody">
+
+        </div>
+
+
+        <button
+            class="close-btn"
+            onclick="closeArticle()"
+        >
+            CLOSE
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function searchKnowledge() {
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const cards =
+        document.querySelectorAll(
+            ".knowledge-card"
+        );
+
+
+    cards.forEach(card => {
+
+        const text =
+            (
+                card.dataset.search +
+                " " +
+                card.innerText
+            )
+            .toLowerCase();
+
+
+        if (
+            text.includes(search)
+        ) {
+
+            card.style.display =
+                "block";
+
+        }
+
+        else {
+
+            card.style.display =
+                "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function filterCards(
+    category,
+    button
+) {
+
+    document
+        .querySelectorAll(".category")
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    const cards =
+        document.querySelectorAll(
+            ".knowledge-card"
+        );
+
+
+    cards.forEach(card => {
+
+        if (
+            category === "all" ||
+            card.dataset.category === category
+        ) {
+
+            card.style.display =
+                "block";
+
+        }
+
+        else {
+
+            card.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    /*
+        Clear search when changing category.
+    */
+
+    document
+        .getElementById("searchInput")
+        .value = "";
+
+}
+
+
+/* =========================================================
+   ARTICLES
+========================================================= */
+
+const articles = {
+
+    "Understanding Addiction": {
+
+        title:
+            "Understanding <span>Addiction</span>",
+
+        content: [
+
+            "Addiction can involve repeated substance use or behaviors that become difficult to control despite negative consequences.",
+
+            "Understanding addiction can help reduce stigma and encourage people to recognize when support may be useful.",
+
+            "Prevention focuses on awareness, healthy decision-making, supportive relationships and early intervention.",
+
+            "If you are worried about yourself or someone else, consider speaking with a trusted adult, qualified professional or appropriate support service."
+
+        ]
+
+    },
+
+
+    "Drugs & The Brain": {
+
+        title:
+            "Drugs & The <span>Brain</span>",
+
+        content: [
+
+            "Some substances can affect brain systems involved in reward, motivation, memory and decision-making.",
+
+            "Repeated exposure can influence patterns of behavior and make stopping more difficult for some people.",
+
+            "Learning how substances can affect the brain can help people make more informed decisions."
+
+        ]
+
+    },
+
+
+    "Warning Signs": {
+
+        title:
+            "Warning <span>Signs</span>",
+
+        content: [
+
+            "Possible warning signs can include noticeable changes in behavior, mood, relationships, responsibilities or daily routines.",
+
+            "One sign alone does not prove that someone has an addiction.",
+
+            "A pattern of concerning changes may be a reason to check in with the person and encourage appropriate support."
+
+        ]
+
+    },
+
+
+    "Prevention Strategies": {
+
+        title:
+            "Prevention <span>Strategies</span>",
+
+        content: [
+
+            "Prevention can involve understanding risks, developing healthy coping strategies and building supportive relationships.",
+
+            "Planning how you will respond to pressure before entering a difficult situation can make it easier to maintain your boundaries.",
+
+            "Healthy activities, meaningful goals and positive social connections can also support wellbeing."
+
+        ]
+
+    },
+
+
+    "Handling Peer Pressure": {
+
+        title:
+            "Handling <span>Peer Pressure</span>",
+
+        content: [
+
+            "Peer pressure can make difficult decisions feel harder.",
+
+            "You can prepare simple responses such as saying no, changing the subject, leaving the situation or contacting someone you trust.",
+
+            "Good friends should respect your boundaries and your decisions."
+
+        ]
+
+    },
+
+
+    "Recovery & Support": {
+
+        title:
+            "Recovery & <span>Support</span>",
+
+        content: [
+
+            "Recovery can be a gradual process and different people may need different kinds of support.",
+
+            "Reaching out to trusted people and qualified professionals can help someone identify appropriate next steps.",
+
+            "A setback does not have to mean giving up. Support and continued effort can remain important parts of the journey."
+
+        ]
+
+    }
+
+};
+
+
+/* =========================================================
+   OPEN ARTICLE
+========================================================= */
+
+function openArticle(name) {
+
+    const article =
+        articles[name];
+
+
+    if (!article)
+        return;
+
+
+    document
+        .getElementById("modalTitle")
+        .innerHTML =
+            article.title;
+
+
+    const body =
+        document
+        .getElementById("modalBody");
+
+
+    body.innerHTML = "";
+
+
+    article.content.forEach(
+        paragraph => {
+
+            const p =
+                document.createElement("p");
+
+            p.textContent =
+                paragraph;
+
+            body.appendChild(p);
+
+        }
+    );
+
+
+    document
+        .getElementById("articleModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================================
+   CLOSE ARTICLE
+========================================================= */
+
+function closeArticle() {
+
+    document
+        .getElementById("articleModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   CLOSE OUTSIDE
+========================================================= */
+
+function closeOutside(event) {
+
+    if (
+        event.target.id ===
+        "articleModal"
+    ) {
+
+        closeArticle();
+
+    }
+
+}
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeArticle();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

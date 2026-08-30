@@ -1,0 +1,4122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FOR THEM | Prevention Quest</title>
+
+
+    <style>
+
+        /* =====================================================
+           FOR THEM — PREVENTION QUEST
+           UI REDESIGN
+        ===================================================== */
+
+        @import url(
+            'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap'
+        );
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+            user-select: none;
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+
+            height: 100%;
+
+            overflow: hidden;
+
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            background: #020914;
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           GAME
+        ===================================================== */
+
+        #game {
+
+            position: relative;
+
+            width: 100vw;
+
+            height: 100vh;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 10%,
+                    rgba(0,229,255,.13),
+                    transparent 28%
+                ),
+
+                linear-gradient(
+                    180deg,
+                    #061525 0%,
+                    #0a2234 42%,
+                    #06131f 100%
+                );
+
+            transition:
+                transform .12s ease,
+                box-shadow .4s ease;
+
+        }
+
+
+        #game::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 30%,
+                    rgba(0,229,255,.04),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 80% 35%,
+                    rgba(58,123,255,.05),
+                    transparent 25%
+                );
+
+            z-index: 1;
+
+        }
+
+
+        #game::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: 0;
+
+            height: 35%;
+
+            pointer-events: none;
+
+            background:
+
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,.35)
+                );
+
+            z-index: 2;
+
+        }
+
+
+        /* =====================================================
+           SUN
+        ===================================================== */
+
+        #sun {
+
+            position: absolute;
+
+            width: 85px;
+
+            height: 85px;
+
+            top: 8%;
+
+            right: 12%;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    #8ff8ff,
+                    #00e5ff 40%,
+                    transparent 72%
+                );
+
+            box-shadow:
+
+                0 0 35px
+                rgba(0,229,255,.5),
+
+                0 0 110px
+                rgba(0,229,255,.18);
+
+            opacity: .75;
+
+            z-index: 3;
+
+            animation:
+                sunPulse 4s ease-in-out infinite;
+
+        }
+
+
+        @keyframes sunPulse {
+
+            0%,
+            100% {
+
+                transform: scale(1);
+
+            }
+
+            50% {
+
+                transform: scale(1.08);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MOUNTAINS
+        ===================================================== */
+
+        .mountain {
+
+            position: absolute;
+
+            bottom: 39%;
+
+            width: 0;
+
+            height: 0;
+
+            border-left:
+                220px solid transparent;
+
+            border-right:
+                220px solid transparent;
+
+            border-bottom:
+                270px solid #071521;
+
+            opacity: .9;
+
+            z-index: 3;
+
+        }
+
+
+        .mountain.one {
+
+            left: -8%;
+
+        }
+
+
+        .mountain.two {
+
+            left: 30%;
+
+            transform:
+                scale(1.3);
+
+            border-bottom-color:
+                #06111d;
+
+        }
+
+
+        .mountain.three {
+
+            right: -8%;
+
+            transform:
+                scale(.9);
+
+            border-bottom-color:
+                #081923;
+
+        }
+
+
+        /* =====================================================
+           ROAD
+        ===================================================== */
+
+        #road {
+
+            position: absolute;
+
+            left: 50%;
+
+            bottom: -5%;
+
+            transform:
+                translateX(-50%);
+
+            width:
+                min(900px,94vw);
+
+            height: 72%;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #02060b 0%,
+                    #142631 10%,
+                    #213842 30%,
+                    #263f49 50%,
+                    #213842 70%,
+                    #142631 90%,
+                    #02060b 100%
+                );
+
+            clip-path:
+
+                polygon(
+                    37% 0,
+                    63% 0,
+                    100% 100%,
+                    0 100%
+                );
+
+            box-shadow:
+
+                0 -10px 60px
+                rgba(0,229,255,.05);
+
+            z-index: 5;
+
+        }
+
+
+        #road::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent 35%,
+                    rgba(0,229,255,.04),
+                    transparent 65%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        /* =====================================================
+           ROAD LINES
+        ===================================================== */
+
+        .roadLine {
+
+            position: absolute;
+
+            top: 0;
+
+            width: 3px;
+
+            height: 100%;
+
+            background:
+
+                repeating-linear-gradient(
+                    to bottom,
+                    rgba(0,229,255,.35)
+                    0 50px,
+                    transparent
+                    50px 105px
+                );
+
+            filter:
+                drop-shadow(
+                    0 0 5px
+                    rgba(0,229,255,.3)
+                );
+
+        }
+
+
+        .roadLine.left {
+
+            left: 36%;
+
+        }
+
+
+        .roadLine.right {
+
+            right: 36%;
+
+        }
+
+
+        /* =====================================================
+           HUD
+        ===================================================== */
+
+        #hud {
+
+            position: absolute;
+
+            z-index: 200;
+
+            top: 18px;
+
+            left: 20px;
+
+            right: 20px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+        }
+
+
+        .logo {
+
+            padding:
+                9px 15px;
+
+            border-radius:
+                12px;
+
+            background:
+                rgba(2,12,24,.68);
+
+            border:
+                1px solid
+                rgba(0,229,255,.14);
+
+            backdrop-filter:
+                blur(15px);
+
+            color: white;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 900;
+
+            letter-spacing:
+                2px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,.2);
+
+        }
+
+
+        .logo span {
+
+            color: #00e5ff;
+
+            text-shadow:
+                0 0 15px
+                rgba(0,229,255,.55);
+
+        }
+
+
+        #score {
+
+            padding:
+                9px 16px;
+
+            border-radius:
+                12px;
+
+            background:
+                rgba(2,12,24,.68);
+
+            border:
+                1px solid
+                rgba(0,229,255,.14);
+
+            backdrop-filter:
+                blur(15px);
+
+            color:
+                #dffcff;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        /* =====================================================
+           THREAT
+        ===================================================== */
+
+        #threatUI {
+
+            position: absolute;
+
+            z-index: 210;
+
+            top: 72px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width:
+                min(440px,65vw);
+
+            padding:
+                12px 15px;
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(2,10,19,.72);
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            backdrop-filter:
+                blur(16px);
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,.2);
+
+        }
+
+
+        #threatLabel {
+
+            margin-bottom: 8px;
+
+            color:
+                #8ca2b5;
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            letter-spacing:
+                2px;
+
+            text-align: center;
+
+        }
+
+
+        #threatTrack {
+
+            width: 100%;
+
+            height: 7px;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.07);
+
+        }
+
+
+        #threatBar {
+
+            width: 10%;
+
+            height: 100%;
+
+            border-radius: 20px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            box-shadow:
+
+                0 0 12px
+                rgba(0,229,255,.4);
+
+            transition:
+
+                width .35s ease,
+                background .35s ease;
+
+        }
+
+
+        /* =====================================================
+           STREAK
+        ===================================================== */
+
+        #streak {
+
+            position: absolute;
+
+            z-index: 210;
+
+            top: 125px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            padding:
+                8px 15px;
+
+            border-radius:
+                30px;
+
+            background:
+                rgba(2,10,19,.7);
+
+            border:
+                1px solid
+                rgba(0,229,255,.12);
+
+            backdrop-filter:
+                blur(12px);
+
+            color:
+                #4de1b8;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            white-space: nowrap;
+
+            transition:
+                .3s ease;
+
+        }
+
+
+        /* =====================================================
+           ADDICTION
+        ===================================================== */
+
+        #addiction {
+
+            position: absolute;
+
+            z-index: 70;
+
+            width: 120px;
+
+            height: 145px;
+
+            left: 50%;
+
+            bottom: 2%;
+
+            transform:
+
+                translateX(-50%)
+                scale(.55);
+
+            transition:
+
+                left .35s ease-out,
+                bottom .5s ease-out,
+                transform .5s ease-out,
+                filter .4s ease-out;
+
+            animation:
+                monsterRun .25s infinite alternate;
+
+        }
+
+
+        @keyframes monsterRun {
+
+            from {
+
+                margin-bottom: 0;
+
+            }
+
+            to {
+
+                margin-bottom: 10px;
+
+            }
+
+        }
+
+
+        #monsterName {
+
+            position: absolute;
+
+            top: -38px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            padding:
+                5px 10px;
+
+            border-radius:
+                8px;
+
+            background:
+                rgba(80,0,20,.55);
+
+            border:
+                1px solid
+                rgba(255,48,79,.3);
+
+            color:
+                #ff5269;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing:
+                3px;
+
+            white-space:
+                nowrap;
+
+            text-shadow:
+                0 0 15px
+                #ff304f;
+
+        }
+
+
+        .horn {
+
+            position: absolute;
+
+            top: -28px;
+
+            width: 30px;
+
+            height: 42px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #260711,
+                    #050206
+                );
+
+            clip-path:
+
+                polygon(
+                    50% 0,
+                    100% 100%,
+                    0 75%
+                );
+
+        }
+
+
+        .horn.left {
+
+            left: 0;
+
+            transform:
+                rotate(-25deg);
+
+        }
+
+
+        .horn.right {
+
+            right: 0;
+
+            transform:
+                rotate(25deg);
+
+        }
+
+
+        .monsterHead {
+
+            position: absolute;
+
+            top: 10px;
+
+            left: 20px;
+
+            width: 80px;
+
+            height: 70px;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    #561326,
+                    #10050a 70%
+                );
+
+            border:
+                2px solid
+                #9b2039;
+
+            box-shadow:
+
+                0 0 30px
+                rgba(255,0,60,.45);
+
+        }
+
+
+        .monsterEye {
+
+            position: absolute;
+
+            top: 25px;
+
+            width: 15px;
+
+            height: 15px;
+
+            border-radius: 50%;
+
+            background:
+                #ff1f46;
+
+            box-shadow:
+
+                0 0 18px
+                #ff1f46,
+
+                0 0 35px
+                rgba(255,31,70,.7);
+
+            animation:
+                monsterBlink 3s infinite;
+
+        }
+
+
+        .monsterEye.left {
+
+            left: 17px;
+
+        }
+
+
+        .monsterEye.right {
+
+            right: 17px;
+
+        }
+
+
+        @keyframes monsterBlink {
+
+            0%,
+            90%,
+            100% {
+
+                transform:
+                    scaleY(1);
+
+            }
+
+            95% {
+
+                transform:
+                    scaleY(.15);
+
+            }
+
+        }
+
+
+        .monsterMouth {
+
+            position: absolute;
+
+            bottom: 10px;
+
+            left: 22px;
+
+            width: 36px;
+
+            height: 16px;
+
+            border-bottom:
+                4px solid
+                #ff304f;
+
+            border-radius:
+                50%;
+
+        }
+
+
+        .monsterBody {
+
+            position: absolute;
+
+            left: 15px;
+
+            bottom: 0;
+
+            width: 90px;
+
+            height: 85px;
+
+            border-radius:
+                45% 45% 20% 20%;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 20%,
+                    #3b0d19,
+                    #0d0409 70%
+                );
+
+            border:
+                2px solid
+                #641529;
+
+        }
+
+
+        .monsterArm {
+
+            position: absolute;
+
+            top: 65px;
+
+            width: 17px;
+
+            height: 58px;
+
+            border-radius:
+                20px;
+
+            background:
+
+                linear-gradient(
+                    #350b17,
+                    #050205
+                );
+
+        }
+
+
+        .monsterArm.left {
+
+            left: 0;
+
+            transform:
+                rotate(35deg);
+
+        }
+
+
+        .monsterArm.right {
+
+            right: 0;
+
+            transform:
+                rotate(-35deg);
+
+        }
+
+
+        /* =====================================================
+           PLAYER
+        ===================================================== */
+
+        #player {
+
+            position: absolute;
+
+            z-index: 100;
+
+            width: 55px;
+
+            height: 100px;
+
+            left: 50%;
+
+            bottom: 18%;
+
+            transform:
+                translateX(-50%);
+
+            transition:
+                left .16s ease,
+                transform .15s ease;
+
+            filter:
+                drop-shadow(
+                    0 10px 15px
+                    rgba(0,0,0,.4)
+                );
+
+        }
+
+
+        .playerHead {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 15px;
+
+            width: 25px;
+
+            height: 25px;
+
+            border-radius: 50%;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #ffd0b0,
+                    #c88a64
+                );
+
+        }
+
+
+        .playerHead::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: -2px;
+
+            left: 2px;
+
+            width: 21px;
+
+            height: 11px;
+
+            border-radius:
+                50% 50% 20% 20%;
+
+            background:
+                #101822;
+
+        }
+
+
+        .playerBody {
+
+            position: absolute;
+
+            top: 24px;
+
+            left: 10px;
+
+            width: 35px;
+
+            height: 42px;
+
+            border-radius: 9px;
+
+            background:
+
+                linear-gradient(
+                    180deg,
+                    #00e5ff,
+                    #08718a
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.2);
+
+            box-shadow:
+
+                0 0 20px
+                rgba(0,229,255,.2);
+
+        }
+
+
+        .playerArm {
+
+            position: absolute;
+
+            top: 27px;
+
+            width: 9px;
+
+            height: 35px;
+
+            border-radius:
+                10px;
+
+            background:
+                #c88a64;
+
+            transform-origin:
+                top center;
+
+        }
+
+
+        .playerArm.left {
+
+            left: 2px;
+
+            animation:
+                armLeft .18s infinite alternate;
+
+        }
+
+
+        .playerArm.right {
+
+            right: 2px;
+
+            animation:
+                armRight .18s infinite alternate;
+
+        }
+
+
+        @keyframes armLeft {
+
+            from {
+                transform:
+                    rotate(-35deg);
+            }
+
+            to {
+                transform:
+                    rotate(35deg);
+            }
+
+        }
+
+
+        @keyframes armRight {
+
+            from {
+                transform:
+                    rotate(35deg);
+            }
+
+            to {
+                transform:
+                    rotate(-35deg);
+            }
+
+        }
+
+
+        .playerLeg {
+
+            position: absolute;
+
+            top: 63px;
+
+            width: 11px;
+
+            height: 38px;
+
+            border-radius:
+                10px;
+
+            background:
+
+                linear-gradient(
+                    #172333,
+                    #050b12
+                );
+
+            transform-origin:
+                top center;
+
+        }
+
+
+        .playerLeg.left {
+
+            left: 13px;
+
+            animation:
+                legLeft .18s infinite alternate;
+
+        }
+
+
+        .playerLeg.right {
+
+            right: 13px;
+
+            animation:
+                legRight .18s infinite alternate;
+
+        }
+
+
+        @keyframes legLeft {
+
+            from {
+                transform:
+                    rotate(25deg);
+            }
+
+            to {
+                transform:
+                    rotate(-25deg);
+            }
+
+        }
+
+
+        @keyframes legRight {
+
+            from {
+                transform:
+                    rotate(-25deg);
+            }
+
+            to {
+                transform:
+                    rotate(25deg);
+            }
+
+        }
+
+
+        /* =====================================================
+           RED TRIGGER
+        ===================================================== */
+
+        .obstacle {
+
+            position: absolute;
+
+            z-index: 80;
+
+            width: 65px;
+
+            height: 65px;
+
+            transform:
+                translateX(-50%);
+
+            border-radius:
+                15px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #370918,
+                    #b51e3c
+                );
+
+            border:
+                2px solid
+                #ff5269;
+
+            box-shadow:
+
+                0 0 25px
+                rgba(255,30,60,.55),
+
+                inset 0 0 20px
+                rgba(255,255,255,.05);
+
+            animation:
+                triggerPulse .8s infinite alternate;
+
+        }
+
+
+        @keyframes triggerPulse {
+
+            from {
+
+                box-shadow:
+                    0 0 20px
+                    rgba(255,30,60,.45);
+
+            }
+
+            to {
+
+                box-shadow:
+                    0 0 38px
+                    rgba(255,30,60,.8);
+
+            }
+
+        }
+
+
+        .obstacle::before {
+
+            content:
+                "⚠";
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            color:
+                white;
+
+            font-size:
+                31px;
+
+        }
+
+
+        .obstacle::after {
+
+            content:
+                "RED TRIGGER";
+
+            position: absolute;
+
+            top: 70px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            color:
+                #ff6074;
+
+            font-size:
+                7px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                2px;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* =====================================================
+           RECOVERY
+        ===================================================== */
+
+        .recovery {
+
+            position: absolute;
+
+            z-index: 80;
+
+            width: 52px;
+
+            height: 52px;
+
+            transform:
+
+                translateX(-50%)
+                rotate(45deg);
+
+            border-radius:
+                11px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #00e5a0,
+                    #07836d
+                );
+
+            border:
+                2px solid
+                #9affdf;
+
+            box-shadow:
+
+                0 0 25px
+                rgba(0,255,180,.55),
+
+                0 0 60px
+                rgba(0,229,255,.2);
+
+            animation:
+                recoveryFloat .7s infinite alternate;
+
+        }
+
+
+        .recovery::after {
+
+            content:
+                "+";
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            color:
+                white;
+
+            font-size:
+                27px;
+
+            font-weight:
+                900;
+
+            transform:
+                rotate(-45deg);
+
+        }
+
+
+        @keyframes recoveryFloat {
+
+            from {
+
+                margin-top: 0;
+
+            }
+
+            to {
+
+                margin-top: -10px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        #message {
+
+            position: absolute;
+
+            z-index: 250;
+
+            left: 50%;
+
+            bottom: 30%;
+
+            transform:
+
+                translateX(-50%)
+                translateY(15px);
+
+            width:
+                min(90%,650px);
+
+            padding:
+                15px 22px;
+
+            text-align:
+                center;
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(2,10,19,.86);
+
+            border:
+                1px solid
+                rgba(0,229,255,.2);
+
+            backdrop-filter:
+                blur(18px);
+
+            color:
+                white;
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+
+            opacity:
+                0;
+
+            transition:
+
+                opacity .25s ease,
+                transform .25s ease;
+
+            box-shadow:
+
+                0 20px 50px
+                rgba(0,0,0,.4);
+
+        }
+
+
+        #message.show {
+
+            opacity:
+                1;
+
+            transform:
+
+                translateX(-50%)
+                translateY(0);
+
+        }
+
+
+        /* =====================================================
+           START SCREEN / GAME OVER
+        ===================================================== */
+
+        #startScreen,
+        #gameOver {
+
+            position: absolute;
+
+            z-index: 500;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            padding:
+                20px;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(0,229,255,.07),
+                    transparent 35%
+                ),
+
+                rgba(1,7,14,.76);
+
+            backdrop-filter:
+                blur(5px);
+
+            animation:
+                screenFade .5s ease;
+
+        }
+
+
+        #gameOver {
+
+            display:
+                none;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(255,30,60,.08),
+                    transparent 35%
+                ),
+
+                rgba(1,5,10,.84);
+
+        }
+
+
+        @keyframes screenFade {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =====================================================
+           PANEL
+        ===================================================== */
+
+        .panel {
+
+            position: relative;
+
+            width:
+                min(92%,680px);
+
+            padding:
+                45px 35px;
+
+            border-radius:
+                28px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(8,24,40,.94),
+                    rgba(3,12,23,.94)
+                );
+
+            border:
+                1px solid
+                rgba(0,229,255,.16);
+
+            backdrop-filter:
+                blur(25px);
+
+            box-shadow:
+
+                0 35px 100px
+                rgba(0,0,0,.65),
+
+                0 0 80px
+                rgba(0,229,255,.05);
+
+            overflow:
+                hidden;
+
+            animation:
+                panelAppear .7s
+                cubic-bezier(.2,.8,.2,1);
+
+        }
+
+
+        .panel::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 180px;
+
+            right: -80px;
+
+            top: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0,229,255,.08);
+
+            filter:
+                blur(30px);
+
+        }
+
+
+        .panel::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 140px;
+
+            height: 140px;
+
+            left: -80px;
+
+            bottom: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0,255,179,.05);
+
+            filter:
+                blur(30px);
+
+        }
+
+
+        @keyframes panelAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+
+                    translateY(30px)
+                    scale(.96);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+
+                    translateY(0)
+                    scale(1);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           EYEBROW
+        ===================================================== */
+
+        .eyebrow {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-bottom:
+                20px;
+
+            color:
+                #00e5ff;
+
+            font-size:
+                10px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                4px;
+
+        }
+
+
+        /* =====================================================
+           START TITLE
+        ===================================================== */
+
+        .panel h1 {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-bottom:
+                25px;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size:
+                clamp(50px,11vw,100px);
+
+            line-height:
+                .85;
+
+            letter-spacing:
+                -3px;
+
+            color:
+                white;
+
+        }
+
+
+        .panel h1 span {
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            -webkit-background-clip:
+                text;
+
+            background-clip:
+                text;
+
+            -webkit-text-fill-color:
+                transparent;
+
+        }
+
+
+        /* =====================================================
+           GAME OVER
+        ===================================================== */
+
+        .panel h2 {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-bottom:
+                20px;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            color:
+                white;
+
+            font-size:
+                55px;
+
+            line-height:
+                .9;
+
+        }
+
+
+        .panel h2 span {
+
+            color:
+                #ff304f !important;
+
+        }
+
+
+        /* =====================================================
+           TEXT
+        ===================================================== */
+
+        .panel p {
+
+            position: relative;
+
+            z-index: 2;
+
+            color:
+                #91a4b7;
+
+            line-height:
+                1.8;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .panel p strong {
+
+            color:
+                #d6e4ef;
+
+            font-weight:
+                700;
+
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .startButton {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-top:
+                28px;
+
+            padding:
+                16px 34px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.2);
+
+            border-radius:
+                14px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #00cfe8,
+                    #00ffb3
+                );
+
+            color:
+                #02120d;
+
+            font-size:
+                11px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1.5px;
+
+            cursor:
+                pointer;
+
+            box-shadow:
+
+                0 12px 35px
+                rgba(0,229,255,.15);
+
+            transition:
+
+                transform .3s ease,
+                box-shadow .3s ease;
+
+        }
+
+
+        .startButton:hover {
+
+            transform:
+
+                translateY(-3px)
+                scale(1.02);
+
+            box-shadow:
+
+                0 18px 45px
+                rgba(0,229,255,.28);
+
+        }
+
+
+        .startButton:active {
+
+            transform:
+                scale(.97);
+
+        }
+
+
+        /* =====================================================
+           CONTROLS
+        ===================================================== */
+
+        .controls {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-top:
+                22px;
+
+            padding:
+                12px;
+
+            border-radius:
+                12px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            color:
+                #62778a;
+
+            font-size:
+                10px;
+
+            line-height:
+                1.9;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:700px) {
+
+            #hud {
+
+                top: 12px;
+
+                left: 12px;
+
+                right: 12px;
+
+            }
+
+
+            .logo {
+
+                font-size:
+                    11px;
+
+                padding:
+                    8px 11px;
+
+            }
+
+
+            #score {
+
+                font-size:
+                    15px;
+
+                padding:
+                    8px 12px;
+
+            }
+
+
+            #threatUI {
+
+                top: 62px;
+
+                width:
+                    min(88vw,420px);
+
+            }
+
+
+            #streak {
+
+                top: 113px;
+
+                font-size:
+                    8px;
+
+            }
+
+
+            .panel {
+
+                padding:
+                    32px 22px;
+
+                border-radius:
+                    22px;
+
+            }
+
+
+            .panel h1 {
+
+                font-size:
+                    clamp(52px,18vw,80px);
+
+            }
+
+
+            .panel h2 {
+
+                font-size:
+                    45px;
+
+            }
+
+
+            .panel p {
+
+                font-size:
+                    12px;
+
+            }
+
+
+            .controls {
+
+                font-size:
+                    9px;
+
+            }
+
+
+            .startButton {
+
+                width:
+                    100%;
+
+                padding:
+                    15px;
+
+            }
+
+
+            #message {
+
+                bottom:
+                    27%;
+
+                font-size:
+                    10px;
+
+                padding:
+                    12px 15px;
+
+            }
+
+        }
+
+
+        @media(max-width:420px) {
+
+            #sun {
+
+                width:
+                    60px;
+
+                height:
+                    60px;
+
+                right:
+                    8%;
+
+            }
+
+
+            #threatUI {
+
+                top:
+                    59px;
+
+            }
+
+
+            #streak {
+
+                top:
+                    108px;
+
+            }
+
+
+            .panel {
+
+                padding:
+                    28px 18px;
+
+            }
+
+
+            .panel h1 {
+
+                font-size:
+                    58px;
+
+            }
+
+
+            .panel h2 {
+
+                font-size:
+                    40px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    .01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    .01ms !important;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div id="game">
+
+
+    <!-- =================================================
+         ENVIRONMENT
+    ================================================= -->
+
+    <div id="sun"></div>
+
+    <div class="mountain one"></div>
+
+    <div class="mountain two"></div>
+
+    <div class="mountain three"></div>
+
+
+    <!-- =================================================
+         ROAD
+    ================================================= -->
+
+    <div id="road">
+
+        <div class="roadLine left"></div>
+
+        <div class="roadLine right"></div>
+
+    </div>
+
+
+    <!-- =================================================
+         HUD
+    ================================================= -->
+
+    <div id="hud">
+
+        <div class="logo">
+
+            FOR <span>THEM</span>
+
+        </div>
+
+
+        <div id="score">
+
+            0 m
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         THREAT
+    ================================================= -->
+
+    <div id="threatUI">
+
+        <div id="threatLabel">
+
+            ADDICTION IS CHASING YOU
+
+        </div>
+
+
+        <div id="threatTrack">
+
+            <div id="threatBar"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         STREAK
+    ================================================= -->
+
+    <div id="streak">
+
+        ✓ SAFE — KEEP RUNNING
+
+    </div>
+
+
+    <!-- =================================================
+         ADDICTION
+    ================================================= -->
+
+    <div id="addiction">
+
+        <div id="monsterName">
+
+            ADDICTION
+
+        </div>
+
+
+        <div class="horn left"></div>
+
+        <div class="horn right"></div>
+
+
+        <div class="monsterHead">
+
+            <div class="monsterEye left"></div>
+
+            <div class="monsterEye right"></div>
+
+            <div class="monsterMouth"></div>
+
+        </div>
+
+
+        <div class="monsterBody"></div>
+
+
+        <div class="monsterArm left"></div>
+
+        <div class="monsterArm right"></div>
+
+    </div>
+
+
+    <!-- =================================================
+         PLAYER
+    ================================================= -->
+
+    <div id="player">
+
+        <div class="playerHead"></div>
+
+        <div class="playerBody"></div>
+
+        <div class="playerArm left"></div>
+
+        <div class="playerArm right"></div>
+
+        <div class="playerLeg left"></div>
+
+        <div class="playerLeg right"></div>
+
+    </div>
+
+
+    <!-- =================================================
+         MESSAGE
+    ================================================= -->
+
+    <div id="message"></div>
+
+
+    <!-- =================================================
+         START SCREEN
+    ================================================= -->
+
+    <div id="startScreen">
+
+        <div class="panel">
+
+
+            <div class="eyebrow">
+
+                FOR THEM • PREVENTION QUEST
+
+            </div>
+
+
+            <h1>
+
+                RUN<br>
+
+                <span>FREE</span>
+
+            </h1>
+
+
+            <p>
+
+                Addiction is chasing you.
+
+                <br><br>
+
+                Avoid harmful triggers,
+                collect positive recovery choices,
+                and keep moving forward.
+
+                <br><br>
+
+                <strong>
+
+                    Three consecutive red triggers
+                    allow Addiction to catch you.
+
+                </strong>
+
+            </p>
+
+
+            <button
+                class="startButton"
+                onclick="startGame()"
+            >
+
+                START THE QUEST →
+
+            </button>
+
+
+            <div class="controls">
+
+                ← → Change lane
+
+                &nbsp; | &nbsp;
+
+                ↑ Jump
+
+                &nbsp; | &nbsp;
+
+                ↓ Slide
+
+                <br>
+
+                Mobile:
+                Swipe left / right / up / down
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         GAME OVER
+    ================================================= -->
+
+    <div id="gameOver">
+
+        <div class="panel">
+
+
+            <div
+                class="eyebrow"
+                style="color:#ff5269;"
+            >
+
+                ADDICTION CAUGHT YOU
+
+            </div>
+
+
+            <h2>
+
+                QUEST<br>
+
+                <span>
+
+                    ENDED
+
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Three addiction triggers
+                were hit consecutively.
+
+                <br><br>
+
+                One setback does not define
+                the recovery journey.
+
+            </p>
+
+
+            <div
+                id="finalScore"
+                style="
+                    position:relative;
+                    z-index:2;
+                    margin-top:20px;
+                    color:#4de1b8;
+                    font-size:30px;
+                    font-weight:900;
+                "
+            >
+
+                0 m
+
+            </div>
+
+
+            <button
+                class="startButton"
+                onclick="restartGame()"
+            >
+
+                TRY AGAIN →
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   GAME VARIABLES
+========================================================= */
+
+let running = false;
+
+let score = 0;
+
+let speed = 6;
+
+
+/*
+    PLAYER LANE
+
+    0 = left
+    1 = center
+    2 = right
+*/
+
+let playerLane = 1;
+
+
+/*
+    MONSTER LANE
+
+    Floating value so Addiction
+    follows gradually.
+*/
+
+let monsterLane = 1;
+
+
+/*
+    ADDICTION DISTANCE
+
+    0   = far
+    100 = caught
+*/
+
+let threat = 10;
+
+
+/*
+    CONSECUTIVE RED TRIGGERS
+*/
+
+let redStreak = 0;
+
+
+let objects = [];
+
+let spawnTimer = 0;
+
+let lastTime = 0;
+
+
+let jumping = false;
+
+let sliding = false;
+
+let jumpTimer;
+
+let slideTimer;
+
+
+/* =========================================================
+   DOM
+========================================================= */
+
+const game =
+    document.getElementById("game");
+
+
+const player =
+    document.getElementById("player");
+
+
+const addiction =
+    document.getElementById("addiction");
+
+
+const scoreElement =
+    document.getElementById("score");
+
+
+const threatBar =
+    document.getElementById("threatBar");
+
+
+const streakElement =
+    document.getElementById("streak");
+
+
+const message =
+    document.getElementById("message");
+
+
+/* =========================================================
+   GET LANE POSITION
+========================================================= */
+
+function getLanePosition(laneNumber) {
+
+    const roadWidth =
+        Math.min(
+            window.innerWidth * .94,
+            900
+        );
+
+
+    const roadLeft =
+        (
+            window.innerWidth -
+            roadWidth
+        ) / 2;
+
+
+    const lanes = [
+
+        roadLeft +
+        roadWidth * .27,
+
+        roadLeft +
+        roadWidth * .50,
+
+        roadLeft +
+        roadWidth * .73
+
+    ];
+
+
+    /*
+        Keep lane inside boundaries.
+    */
+
+    if (
+        laneNumber <= 0
+    ) {
+
+        return lanes[0];
+
+    }
+
+
+    if (
+        laneNumber >= 2
+    ) {
+
+        return lanes[2];
+
+    }
+
+
+    const lower =
+        Math.floor(
+            laneNumber
+        );
+
+
+    const upper =
+        Math.ceil(
+            laneNumber
+        );
+
+
+    if (
+        lower === upper
+    ) {
+
+        return lanes[lower];
+
+    }
+
+
+    const amount =
+        laneNumber -
+        lower;
+
+
+    return (
+
+        lanes[lower] +
+
+        (
+            lanes[upper] -
+            lanes[lower]
+        ) *
+
+        amount
+
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE PLAYER
+========================================================= */
+
+function updatePlayerPosition() {
+
+    player.style.left =
+        getLanePosition(
+            playerLane
+        ) + "px";
+
+}
+
+
+/* =========================================================
+   UPDATE ADDICTION CHASE
+========================================================= */
+
+function updateMonsterChase(delta) {
+
+    /*
+        Addiction follows the player
+        but deliberately lags behind.
+    */
+
+    const followStrength =
+        0.08 * delta;
+
+
+    monsterLane +=
+
+        (
+            playerLane -
+            monsterLane
+        ) *
+
+        followStrength;
+
+
+    const monsterX =
+        getLanePosition(
+            monsterLane
+        );
+
+
+    addiction.style.left =
+        monsterX + "px";
+
+
+    /*
+        Threat controls distance.
+    */
+
+    const danger =
+        threat / 100;
+
+
+    const monsterBottom =
+
+        2 +
+        danger * 11;
+
+
+    addiction.style.bottom =
+        monsterBottom + "%";
+
+
+    /*
+        Addiction becomes larger
+        when danger increases.
+    */
+
+    const scale =
+
+        .55 +
+        danger * .4;
+
+
+    addiction.style.transform =
+
+        `
+        translateX(-50%)
+        scale(${scale})
+        `;
+
+
+    /*
+        Glow increases with danger.
+    */
+
+    const glow =
+
+        15 +
+        danger * 70;
+
+
+    addiction.style.filter =
+
+        `
+        drop-shadow(
+            0 0 ${glow}px
+            rgba(255,0,60,.9)
+        )
+        `;
+
+}
+
+
+/* =========================================================
+   START GAME
+========================================================= */
+
+function startGame() {
+
+    document.getElementById(
+        "startScreen"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "gameOver"
+    ).style.display =
+        "none";
+
+
+    running = true;
+
+
+    score = 0;
+
+    speed = 6;
+
+    playerLane = 1;
+
+    monsterLane = 1;
+
+    threat = 10;
+
+    redStreak = 0;
+
+    spawnTimer = 0;
+
+
+    /*
+        Remove previous objects.
+    */
+
+    objects.forEach(
+        obj => obj.element.remove()
+    );
+
+
+    objects = [];
+
+
+    updatePlayerPosition();
+
+    updateThreat();
+
+    updateStreak();
+
+    updateHUD();
+
+
+    lastTime =
+        performance.now();
+
+
+    requestAnimationFrame(
+        gameLoop
+    );
+
+}
+
+
+/* =========================================================
+   GAME LOOP
+========================================================= */
+
+function gameLoop(time) {
+
+    if (!running)
+        return;
+
+
+    const delta =
+
+        Math.min(
+
+            (
+                time -
+                lastTime
+            ) / 16.67,
+
+            2
+
+        );
+
+
+    lastTime = time;
+
+
+    /*
+        Increase score.
+    */
+
+    score +=
+
+        speed *
+        .11 *
+        delta;
+
+
+    /*
+        Gradually increase speed.
+    */
+
+    speed +=
+
+        .0005 *
+        delta;
+
+
+    /*
+        Addiction follows player.
+    */
+
+    updateMonsterChase(
+        delta
+    );
+
+
+    /*
+        Spawn objects.
+    */
+
+    spawnTimer += delta;
+
+
+    const spawnRate =
+
+        Math.max(
+            30,
+            65 -
+            speed * 2
+        );
+
+
+    if (
+        spawnTimer >
+        spawnRate
+    ) {
+
+        spawnObject();
+
+        spawnTimer = 0;
+
+    }
+
+
+    moveObjects(
+        delta
+    );
+
+
+    updateHUD();
+
+
+    requestAnimationFrame(
+        gameLoop
+    );
+
+}
+
+
+/* =========================================================
+   SPAWN OBJECT
+========================================================= */
+
+function spawnObject() {
+
+    const element =
+        document.createElement(
+            "div"
+        );
+
+
+    /*
+        75% = red trigger
+        25% = recovery
+    */
+
+    const isTrigger =
+        Math.random() < .75;
+
+
+    const type =
+
+        isTrigger
+        ? "obstacle"
+        : "recovery";
+
+
+    const objectLane =
+
+        Math.floor(
+            Math.random() * 3
+        );
+
+
+    element.classList.add(
+        type
+    );
+
+
+    element.style.left =
+
+        getLanePosition(
+            objectLane
+        ) + "px";
+
+
+    element.style.top =
+        "-100px";
+
+
+    game.appendChild(
+        element
+    );
+
+
+    objects.push({
+
+        element,
+
+        lane:
+            objectLane,
+
+        y:
+            -100,
+
+        type,
+
+        checked:
+            false
+
+    });
+
+}
+
+
+/* =========================================================
+   MOVE OBJECTS
+========================================================= */
+
+function moveObjects(delta) {
+
+    for (
+
+        let i =
+            objects.length - 1;
+
+        i >= 0;
+
+        i--
+
+    ) {
+
+        const object =
+            objects[i];
+
+
+        object.y +=
+
+            speed *
+            delta;
+
+
+        object.element.style.top =
+            object.y + "px";
+
+
+        /*
+            Collision zone.
+        */
+
+        if (
+
+            object.y >
+            window.innerHeight * .65
+
+            &&
+
+            object.y <
+            window.innerHeight * .82
+
+            &&
+
+            object.lane ===
+            playerLane
+
+            &&
+
+            !object.checked
+
+        ) {
+
+            object.checked = true;
+
+
+            /*
+                RED TRIGGER
+            */
+
+            if (
+                object.type ===
+                "obstacle"
+            ) {
+
+                if (
+                    jumping ||
+                    sliding
+                ) {
+
+                    avoidedTrigger();
+
+                }
+
+                else {
+
+                    hitTrigger();
+
+                }
+
+
+                removeObject(i);
+
+            }
+
+
+            /*
+                RECOVERY
+            */
+
+            else {
+
+                collectRecovery();
+
+                removeObject(i);
+
+            }
+
+        }
+
+
+        /*
+            Remove old objects.
+        */
+
+        if (
+            object.y >
+            window.innerHeight + 120
+        ) {
+
+            removeObject(i);
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   REMOVE OBJECT
+========================================================= */
+
+function removeObject(index) {
+
+    if (
+        !objects[index]
+    )
+        return;
+
+
+    objects[index]
+        .element
+        .remove();
+
+
+    objects.splice(
+        index,
+        1
+    );
+
+}
+
+
+/* =========================================================
+   RED TRIGGER
+========================================================= */
+
+function hitTrigger() {
+
+    redStreak++;
+
+
+    /*
+        FIRST TRIGGER
+    */
+
+    if (
+        redStreak === 1
+    ) {
+
+        threat += 22;
+
+
+        showMessage(
+            "🔴 TRIGGER 1/3 — ADDICTION IS CLOSER"
+        );
+
+    }
+
+
+    /*
+        SECOND TRIGGER
+    */
+
+    else if (
+        redStreak === 2
+    ) {
+
+        threat += 32;
+
+
+        showMessage(
+            "🔴 TRIGGER 2/3 — ADDICTION IS VERY CLOSE!"
+        );
+
+    }
+
+
+    /*
+        THIRD TRIGGER
+    */
+
+    else {
+
+        threat = 100;
+
+
+        updateThreat();
+
+        updateStreak();
+
+
+        showMessage(
+            "🔴 🔴 🔴 ADDICTION CAUGHT YOU!"
+        );
+
+
+        /*
+            Addiction moves toward
+            player's current lane.
+        */
+
+        monsterLane =
+            playerLane;
+
+
+        addiction.style.left =
+
+            getLanePosition(
+                playerLane
+            ) + "px";
+
+
+        addiction.style.bottom =
+            "17%";
+
+
+        addiction.style.transform =
+
+            `
+            translateX(-50%)
+            scale(1.2)
+            `;
+
+
+        addiction.style.filter =
+
+            `
+            drop-shadow(
+                0 0 100px
+                rgba(255,0,50,1)
+            )
+            `;
+
+
+        setTimeout(
+            endGame,
+            700
+        );
+
+
+        return;
+
+    }
+
+
+    threat =
+
+        Math.min(
+            100,
+            threat
+        );
+
+
+    updateThreat();
+
+    updateStreak();
+
+    dangerShake();
+
+}
+
+
+/* =========================================================
+   AVOID TRIGGER
+========================================================= */
+
+function avoidedTrigger() {
+
+    /*
+        Successful jump / slide
+        resets streak.
+    */
+
+    redStreak = 0;
+
+
+    /*
+        Addiction falls back.
+    */
+
+    threat -= 14;
+
+
+    threat =
+
+        Math.max(
+            0,
+            threat
+        );
+
+
+    showMessage(
+        "✓ TRIGGER AVOIDED — ADDICTION FALLS BACK"
+    );
+
+
+    updateThreat();
+
+    updateStreak();
+
+}
+
+
+/* =========================================================
+   RECOVERY
+========================================================= */
+
+function collectRecovery() {
+
+    redStreak = 0;
+
+
+    /*
+        Recovery pushes Addiction back.
+    */
+
+    threat -= 25;
+
+
+    threat =
+
+        Math.max(
+            0,
+            threat
+        );
+
+
+    /*
+        Bonus score.
+    */
+
+    score += 50;
+
+
+    showMessage(
+        "✦ RECOVERY FOUND — ADDICTION FALLS BACK"
+    );
+
+
+    updateThreat();
+
+    updateStreak();
+
+}
+
+
+/* =========================================================
+   THREAT BAR
+========================================================= */
+
+function updateThreat() {
+
+    threatBar.style.width =
+        threat + "%";
+
+
+    /*
+        HIGH DANGER
+    */
+
+    if (
+        threat >= 70
+    ) {
+
+        threatBar.style.background =
+
+            "linear-gradient(90deg,#ff304f,#ff003c)";
+
+
+        game.style.boxShadow =
+
+            `
+            inset 0 0 160px
+            rgba(255,0,40,.65)
+            `;
+
+    }
+
+
+    /*
+        MEDIUM DANGER
+    */
+
+    else if (
+        threat >= 40
+    ) {
+
+        threatBar.style.background =
+
+            "linear-gradient(90deg,#ffd166,#ff704f)";
+
+
+        game.style.boxShadow =
+
+            `
+            inset 0 0 100px
+            rgba(255,60,30,.3)
+            `;
+
+    }
+
+
+    /*
+        SAFE
+    */
+
+    else {
+
+        threatBar.style.background =
+
+            "linear-gradient(90deg,#00e5ff,#00ffb3)";
+
+
+        game.style.boxShadow =
+            "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   STREAK
+========================================================= */
+
+function updateStreak() {
+
+    if (
+        redStreak === 0
+    ) {
+
+        streakElement.textContent =
+            "✓ SAFE — KEEP RUNNING";
+
+
+        streakElement.style.color =
+            "#4de1b8";
+
+    }
+
+
+    else if (
+        redStreak === 1
+    ) {
+
+        streakElement.textContent =
+            "🔴 TRIGGER 1 / 3";
+
+
+        streakElement.style.color =
+            "#ffd166";
+
+    }
+
+
+    else if (
+        redStreak === 2
+    ) {
+
+        streakElement.textContent =
+            "🔴 🔴 TRIGGER 2 / 3";
+
+
+        streakElement.style.color =
+            "#ff704f";
+
+    }
+
+
+    else {
+
+        streakElement.textContent =
+            "🔴 🔴 🔴 CAUGHT";
+
+
+        streakElement.style.color =
+            "#ff304f";
+
+    }
+
+}
+
+
+/* =========================================================
+   HUD
+========================================================= */
+
+function updateHUD() {
+
+    scoreElement.textContent =
+
+        Math.floor(score) +
+        " m";
+
+}
+
+
+/* =========================================================
+   SHAKE
+========================================================= */
+
+function dangerShake() {
+
+    game.style.transform =
+        "translateX(-6px)";
+
+
+    setTimeout(
+        () => {
+
+            game.style.transform =
+                "translateX(6px)";
+
+        },
+        60
+    );
+
+
+    setTimeout(
+        () => {
+
+            game.style.transform =
+                "translateX(0)";
+
+        },
+        130
+    );
+
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+function showMessage(text) {
+
+    message.textContent =
+        text;
+
+
+    message.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        message.timer
+    );
+
+
+    message.timer =
+
+        setTimeout(
+            () => {
+
+                message.classList.remove(
+                    "show"
+                );
+
+            },
+            1600
+        );
+
+}
+
+
+/* =========================================================
+   MOVE LEFT
+========================================================= */
+
+function moveLeft() {
+
+    if (!running)
+        return;
+
+
+    if (
+        playerLane > 0
+    ) {
+
+        playerLane--;
+
+        updatePlayerPosition();
+
+    }
+
+}
+
+
+/* =========================================================
+   MOVE RIGHT
+========================================================= */
+
+function moveRight() {
+
+    if (!running)
+        return;
+
+
+    if (
+        playerLane < 2
+    ) {
+
+        playerLane++;
+
+        updatePlayerPosition();
+
+    }
+
+}
+
+
+/* =========================================================
+   JUMP
+========================================================= */
+
+function jump() {
+
+    if (
+        !running ||
+        jumping
+    )
+        return;
+
+
+    jumping = true;
+
+
+    player.style.transform =
+
+        `
+        translateX(-50%)
+        translateY(-125px)
+        `;
+
+
+    clearTimeout(
+        jumpTimer
+    );
+
+
+    jumpTimer =
+
+        setTimeout(
+            () => {
+
+                player.style.transform =
+                    "translateX(-50%)";
+
+
+                jumping = false;
+
+            },
+            550
+        );
+
+}
+
+
+/* =========================================================
+   SLIDE
+========================================================= */
+
+function slide() {
+
+    if (
+        !running ||
+        sliding
+    )
+        return;
+
+
+    sliding = true;
+
+
+    player.style.transform =
+
+        `
+        translateX(-50%)
+        scaleY(.5)
+        `;
+
+
+    clearTimeout(
+        slideTimer
+    );
+
+
+    slideTimer =
+
+        setTimeout(
+            () => {
+
+                player.style.transform =
+                    "translateX(-50%)";
+
+
+                sliding = false;
+
+            },
+            550
+        );
+
+}
+
+
+/* =========================================================
+   GAME OVER
+========================================================= */
+
+function endGame() {
+
+    if (!running)
+        return;
+
+
+    running = false;
+
+
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+
+        Math.floor(score) +
+        " m";
+
+
+    document.getElementById(
+        "gameOver"
+    ).style.display =
+        "flex";
+
+}
+
+
+/* =========================================================
+   RESTART
+========================================================= */
+
+function restartGame() {
+
+    startGame();
+
+}
+
+
+/* =========================================================
+   KEYBOARD CONTROLS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        /*
+            LEFT
+        */
+
+        if (
+
+            event.key === "ArrowLeft" ||
+
+            event.key === "a" ||
+
+            event.key === "A"
+
+        ) {
+
+            moveLeft();
+
+        }
+
+
+        /*
+            RIGHT
+        */
+
+        if (
+
+            event.key === "ArrowRight" ||
+
+            event.key === "d" ||
+
+            event.key === "D"
+
+        ) {
+
+            moveRight();
+
+        }
+
+
+        /*
+            JUMP
+        */
+
+        if (
+
+            event.key === "ArrowUp" ||
+
+            event.key === "w" ||
+
+            event.key === "W" ||
+
+            event.key === " "
+
+        ) {
+
+            event.preventDefault();
+
+            jump();
+
+        }
+
+
+        /*
+            SLIDE
+        */
+
+        if (
+
+            event.key === "ArrowDown" ||
+
+            event.key === "s" ||
+
+            event.key === "S"
+
+        ) {
+
+            slide();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MOBILE SWIPE
+========================================================= */
+
+let touchStartX = 0;
+
+let touchStartY = 0;
+
+
+document.addEventListener(
+    "touchstart",
+    function(event) {
+
+        const touch =
+            event.changedTouches[0];
+
+
+        touchStartX =
+            touch.clientX;
+
+
+        touchStartY =
+            touch.clientY;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+document.addEventListener(
+    "touchend",
+    function(event) {
+
+        const touch =
+            event.changedTouches[0];
+
+
+        const dx =
+
+            touch.clientX -
+            touchStartX;
+
+
+        const dy =
+
+            touch.clientY -
+            touchStartY;
+
+
+        const threshold =
+            35;
+
+
+        /*
+            HORIZONTAL SWIPE
+        */
+
+        if (
+            Math.abs(dx) >
+            Math.abs(dy)
+        ) {
+
+            if (
+                dx > threshold
+            ) {
+
+                moveRight();
+
+            }
+
+            else if (
+                dx < -threshold
+            ) {
+
+                moveLeft();
+
+            }
+
+        }
+
+
+        /*
+            VERTICAL SWIPE
+        */
+
+        else {
+
+            if (
+                dy < -threshold
+            ) {
+
+                jump();
+
+            }
+
+            else if (
+                dy > threshold
+            ) {
+
+                slide();
+
+            }
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        updatePlayerPosition();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

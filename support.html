@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FOR THEM | Support Center</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap');
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            color: white;
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(0, 229, 255, 0.08),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(58, 123, 255, 0.08),
+                    transparent 25%
+                ),
+                #030b15;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           PARTICLES
+        ========================= */
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #00e5ff;
+            opacity: 0.3;
+            animation: float 10s linear infinite;
+        }
+
+        .particle:nth-child(1) {
+            left: 10%;
+            top: 90%;
+        }
+
+        .particle:nth-child(2) {
+            left: 25%;
+            top: 70%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(3) {
+            left: 45%;
+            top: 85%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(4) {
+            left: 65%;
+            top: 75%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(5) {
+            left: 80%;
+            top: 90%;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(6) {
+            left: 90%;
+            top: 60%;
+            animation-delay: 5s;
+        }
+
+        @keyframes float {
+
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.4;
+            }
+
+            80% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            height: 75px;
+
+            padding: 0 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(2, 10, 19, 0.88);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(0, 229, 255, 0.08);
+        }
+
+        .logo {
+            font-family: Poppins, sans-serif;
+
+            font-size: 19px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #00e5ff;
+
+            text-shadow:
+                0 0 18px rgba(0, 229, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+
+            color: #8fa4b7;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #00e5ff;
+        }
+
+        .dashboard-btn {
+            padding: 10px 17px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            color: #001016 !important;
+
+            font-weight: 800 !important;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            max-width: 1200px;
+
+            margin: auto;
+
+            min-height: 520px;
+
+            padding: 110px 7% 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 60px;
+        }
+
+        .hero-text {
+            max-width: 680px;
+
+            animation:
+                heroIn 1s ease forwards;
+        }
+
+        @keyframes heroIn {
+
+            from {
+                opacity: 0;
+                transform: translateX(-35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .eyebrow {
+            color: #00e5ff;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: Poppins, sans-serif;
+
+            font-size:
+                clamp(48px, 7vw, 78px);
+
+            line-height: 1;
+
+            letter-spacing: -3px;
+        }
+
+        .hero h1 span {
+            background:
+                linear-gradient(
+                    135deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 610px;
+
+            margin-top: 25px;
+
+            color: #8fa1b4;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+        .hero-quote {
+            margin-top: 25px;
+
+            padding-left: 18px;
+
+            border-left:
+                2px solid #00e5ff;
+
+            color: #b8c8d6;
+
+            font-size: 13px;
+
+            font-style: italic;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           SUPPORT ORB
+        ========================= */
+
+        .support-orb {
+            width: 270px;
+
+            height: 270px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 229, 255, 0.16),
+                    rgba(0, 229, 255, 0.03) 50%,
+                    transparent 70%
+                );
+
+            border:
+                1px solid rgba(0, 229, 255, 0.22);
+
+            box-shadow:
+                0 0 80px rgba(0, 229, 255, 0.09);
+
+            animation:
+                pulse 4s ease-in-out infinite;
+        }
+
+        .support-orb::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 22px;
+
+            border-radius: 50%;
+
+            border:
+                1px dashed rgba(0, 229, 255, 0.25);
+
+            animation:
+                rotate 15s linear infinite;
+        }
+
+        .support-orb::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 50px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(0, 255, 179, 0.22);
+        }
+
+        .heart {
+            font-size: 70px;
+
+            z-index: 2;
+
+            filter:
+                drop-shadow(
+                    0 0 20px
+                    rgba(0, 229, 255, 0.5)
+                );
+
+            animation:
+                heartBeat 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes rotate {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.15);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.1);
+            }
+        }
+
+
+        /* =========================
+           COMMON SECTION
+        ========================= */
+
+        section {
+            padding: 85px 7%;
+        }
+
+        .section-heading {
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+        .section-heading span {
+            color: #00e5ff;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+        .section-heading h2 {
+            margin-top: 12px;
+
+            font-family: Poppins, sans-serif;
+
+            font-size:
+                clamp(30px, 4vw, 45px);
+        }
+
+        .section-heading p {
+            max-width: 650px;
+
+            margin-top: 12px;
+
+            color: #8194a7;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           EMERGENCY AREA
+        ========================= */
+
+        .emergency-section {
+            padding-top: 10px;
+            padding-bottom: 70px;
+        }
+
+        .emergency {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0, 229, 255, 0.07),
+                    rgba(0, 255, 179, 0.025)
+                );
+
+            border:
+                1px solid rgba(0, 229, 255, 0.18);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .emergency-text {
+            max-width: 700px;
+        }
+
+        .emergency-text h2 {
+            font-family: Poppins, sans-serif;
+
+            font-size: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .emergency-text p {
+            color: #879bad;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+        }
+
+        .emergency-btn {
+            padding:
+                13px 22px;
+
+            border:
+                none;
+
+            border-radius:
+                10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            color:
+                #001016;
+
+            font-family:
+                Inter,
+                sans-serif;
+
+            font-size:
+                11px;
+
+            font-weight:
+                900;
+
+            white-space:
+                nowrap;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.3s;
+        }
+
+        .emergency-btn:hover {
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 229, 255, 0.25);
+        }
+
+
+        /* =========================
+           SUPPORT OPTIONS
+        ========================= */
+
+        .support-section {
+            background: #06121f;
+        }
+
+        .support-grid {
+            max-width: 1100px;
+
+            margin: 45px auto 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .support-card {
+            padding: 30px;
+
+            min-height: 260px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.075);
+
+            transition:
+                0.4s ease;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .support-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+
+            height: 130px;
+
+            right: -60px;
+
+            top: -60px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0, 229, 255, 0.05);
+
+            transition:
+                0.4s;
+        }
+
+        .support-card:hover {
+            transform:
+                translateY(-9px);
+
+            border-color:
+                rgba(0, 229, 255, 0.35);
+
+            background:
+                rgba(0, 229, 255, 0.04);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0, 0, 0, 0.25);
+        }
+
+        .support-card:hover::before {
+            transform:
+                scale(1.5);
+        }
+
+        .support-icon {
+            width: 55px;
+
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background:
+                rgba(0, 229, 255, 0.08);
+
+            border:
+                1px solid rgba(0, 229, 255, 0.16);
+
+            font-size: 26px;
+
+            margin-bottom: 20px;
+        }
+
+        .support-card h3 {
+            font-family: Poppins, sans-serif;
+
+            font-size: 19px;
+
+            margin-bottom: 12px;
+        }
+
+        .support-card p {
+            color: #8194a7;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+        }
+
+        .support-link {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            color: #00e5ff;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            text-decoration: none;
+
+            transition:
+                0.3s;
+        }
+
+        .support-card:hover .support-link {
+            transform:
+                translateX(6px);
+        }
+
+
+        /* =========================
+           COPING TOOLS
+        ========================= */
+
+        .tools-grid {
+            max-width: 1100px;
+
+            margin: 45px auto 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 16px;
+        }
+
+        .tool {
+            padding: 25px 20px;
+
+            text-align: center;
+
+            border-radius: 18px;
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.07);
+
+            transition:
+                0.35s;
+        }
+
+        .tool:hover {
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(0, 229, 255, 0.3);
+        }
+
+        .tool-icon {
+            font-size: 32px;
+
+            margin-bottom: 15px;
+        }
+
+        .tool h3 {
+            font-size: 14px;
+
+            margin-bottom: 8px;
+        }
+
+        .tool p {
+            color: #8194a7;
+
+            font-size: 10px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           PEOPLE
+        ========================= */
+
+        .people-section {
+            background:
+                #06101c;
+        }
+
+        .people-grid {
+            max-width: 1100px;
+
+            margin: 45px auto 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .person {
+            padding: 28px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.07);
+
+            transition:
+                0.3s;
+        }
+
+        .person:hover {
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(0, 229, 255, 0.3);
+        }
+
+        .person-icon {
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+        .person h3 {
+            font-size: 17px;
+
+            margin-bottom: 9px;
+        }
+
+        .person p {
+            color: #8194a7;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        .faq {
+            max-width: 850px;
+
+            margin: 45px auto 0;
+        }
+
+        .faq-item {
+            margin-bottom: 12px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.07);
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(255, 255, 255, 0.03);
+
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+
+            padding: 19px 20px;
+
+            border: none;
+
+            background: transparent;
+
+            color: white;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        .faq-question span {
+            color: #00e5ff;
+
+            font-size: 18px;
+
+            transition:
+                0.3s;
+        }
+
+        .faq-answer {
+            max-height: 0;
+
+            overflow: hidden;
+
+            transition:
+                max-height 0.4s ease;
+        }
+
+        .faq-answer p {
+            padding:
+                0 20px 20px;
+
+            color:
+                #8194a7;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.8;
+        }
+
+        .faq-item.open
+        .faq-answer {
+            max-height:
+                200px;
+        }
+
+        .faq-item.open
+        .faq-question span {
+            transform:
+                rotate(45deg);
+        }
+
+
+        /* =========================
+           FINAL MESSAGE
+        ========================= */
+
+        .final-message {
+            padding:
+                110px 20px;
+
+            text-align:
+                center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(0, 229, 255, 0.1),
+                    transparent 55%
+                );
+        }
+
+        .final-icon {
+            font-size:
+                55px;
+
+            margin-bottom:
+                20px;
+        }
+
+        .final-message h2 {
+            font-family:
+                Poppins, sans-serif;
+
+            font-size:
+                clamp(30px, 4vw, 48px);
+
+            margin-bottom:
+                18px;
+        }
+
+        .final-message h2 span {
+            color:
+                #00e5ff;
+        }
+
+        .final-message p {
+            max-width:
+                650px;
+
+            margin:
+                auto;
+
+            color:
+                #8194a7;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.9;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding:
+                40px 7%;
+
+            background:
+                #020914;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.06);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+        }
+
+        footer p {
+            color:
+                #617487;
+
+            font-size:
+                10px;
+        }
+
+        footer span {
+            color:
+                #00e5ff;
+        }
+
+
+        /* =====================================================
+           EMERGENCY MODAL
+        ===================================================== */
+
+        .emergency-modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 3000;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0, 0, 0, 0.78);
+
+            backdrop-filter:
+                blur(12px);
+        }
+
+        .emergency-modal.show {
+            display:
+                flex;
+
+            animation:
+                emergencyFade 0.3s ease;
+        }
+
+        @keyframes emergencyFade {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        /* =========================
+           EMERGENCY BOX
+        ========================= */
+
+        .emergency-box {
+
+            width:
+                min(500px, 95%);
+
+            padding:
+                40px;
+
+            position:
+                relative;
+
+            text-align:
+                center;
+
+            border-radius:
+                25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #071a2b,
+                    #04101c
+                );
+
+            border:
+                1px solid
+                rgba(0, 229, 255, 0.25);
+
+            box-shadow:
+                0 30px 100px
+                rgba(0, 0, 0, 0.7);
+
+            animation:
+                emergencyBox 0.4s ease;
+        }
+
+        @keyframes emergencyBox {
+
+            from {
+                transform:
+                    scale(0.85)
+                    translateY(25px);
+
+                opacity:
+                    0;
+            }
+
+            to {
+                transform:
+                    scale(1)
+                    translateY(0);
+
+                opacity:
+                    1;
+            }
+        }
+
+
+        /* =========================
+           CLOSE BUTTON
+        ========================= */
+
+        .emergency-close {
+
+            position:
+                absolute;
+
+            right:
+                18px;
+
+            top:
+                15px;
+
+            width:
+                35px;
+
+            height:
+                35px;
+
+            border:
+                none;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(255, 255, 255, 0.06);
+
+            color:
+                white;
+
+            font-size:
+                25px;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.3s;
+        }
+
+        .emergency-close:hover {
+
+            background:
+                rgba(0, 229, 255, 0.15);
+
+            color:
+                #00e5ff;
+
+            transform:
+                rotate(90deg);
+        }
+
+
+        /* =========================
+           EMERGENCY ICON
+        ========================= */
+
+        .emergency-icon {
+
+            font-size:
+                55px;
+
+            margin-bottom:
+                18px;
+
+            animation:
+                emergencyPulse 1.5s infinite;
+        }
+
+        @keyframes emergencyPulse {
+
+            0%,
+            100% {
+                transform:
+                    scale(1);
+            }
+
+            50% {
+                transform:
+                    scale(1.12);
+            }
+        }
+
+
+        .emergency-box h2 {
+
+            font-family:
+                Poppins,
+                sans-serif;
+
+            font-size:
+                27px;
+
+            margin-bottom:
+                15px;
+        }
+
+        .emergency-box p {
+
+            color:
+                #8fa1b4;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        /* =========================
+           EMERGENCY ACTIONS
+        ========================= */
+
+        .emergency-actions {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            gap:
+                12px;
+
+            flex-wrap:
+                wrap;
+        }
+
+
+        .call-btn {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                13px 24px;
+
+            border-radius:
+                10px;
+
+            text-decoration:
+                none;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00e5ff,
+                    #00ffb3
+                );
+
+            color:
+                #001016;
+
+            font-size:
+                11px;
+
+            font-weight:
+                900;
+
+            transition:
+                0.3s;
+        }
+
+        .call-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 229, 255, 0.25);
+        }
+
+
+        .cancel-btn {
+
+            padding:
+                13px 20px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
+            border-radius:
+                10px;
+
+            background:
+                rgba(255, 255, 255, 0.04);
+
+            color:
+                #a5b5c4;
+
+            font-size:
+                10px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.3s;
+        }
+
+        .cancel-btn:hover {
+
+            border-color:
+                rgba(0, 229, 255, 0.3);
+
+            color:
+                #00e5ff;
+        }
+
+        .emergency-box small {
+
+            display:
+                block;
+
+            margin-top:
+                22px;
+
+            color:
+                #607589;
+
+            font-size:
+                9px;
+
+            line-height:
+                1.6;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .hero {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+
+            .support-orb {
+
+                width:
+                    190px;
+
+                height:
+                    190px;
+
+                align-self:
+                    center;
+            }
+
+            .support-grid,
+            .people-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .tools-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .emergency {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+
+            .nav-links a:not(.dashboard-btn) {
+
+                display:
+                    none;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                padding:
+                    0 5%;
+            }
+
+            .hero {
+
+                padding:
+                    80px 5% 60px;
+            }
+
+            section {
+
+                padding:
+                    65px 5%;
+            }
+
+            .support-grid,
+            .people-grid,
+            .tools-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .emergency-box {
+
+                padding:
+                    35px 22px;
+            }
+
+            footer {
+
+                flex-direction:
+                    column;
+
+                text-align:
+                    center;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND PARTICLES
+===================================================== -->
+
+<div class="particles">
+
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+</div>
+
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav>
+
+    <div class="logo">
+        FOR <span>THEM</span>
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="self-check.html">
+            Self-Check
+        </a>
+
+        <a href="knowledge-hub.html">
+            Knowledge
+        </a>
+
+        <a href="prevention-quest.html">
+            Quest
+        </a>
+
+        <a href="support.html" class="active">
+            Support
+        </a>
+
+        <a href="dashboard.html" class="dashboard-btn">
+            Dashboard
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+
+    <div class="hero-text">
+
+        <div class="eyebrow">
+            FOR THEM • SUPPORT CENTER
+        </div>
+
+
+        <h1>
+
+            YOU DON'T<br>
+
+            HAVE TO DO IT
+            <span>ALONE.</span>
+
+        </h1>
+
+
+        <p>
+
+            Sometimes the strongest thing you can do
+            is ask for support.
+
+            Find practical tools, trusted people,
+            guidance and resources that can help you
+            take your next step.
+
+        </p>
+
+
+        <div class="hero-quote">
+
+            “Asking for help isn't weakness.
+            It is a decision to keep moving forward.”
+
+        </div>
+
+    </div>
+
+
+    <div class="support-orb">
+
+        <div class="heart">
+            ❤️
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     EMERGENCY SUPPORT
+===================================================== -->
+
+<section class="emergency-section">
+
+
+    <div class="emergency">
+
+        <div class="emergency-text">
+
+            <h2>
+                🚨 Need immediate help?
+            </h2>
+
+            <p>
+
+                If you or someone else is in immediate
+                danger, contact emergency services or
+                get help from a trusted person nearby.
+
+                Do not rely only on this website for
+                emergency assistance.
+
+            </p>
+
+        </div>
+
+
+        <!-- POPUP BUTTON -->
+
+        <button
+            class="emergency-btn"
+            onclick="showEmergency()"
+        >
+
+            🚨 GET EMERGENCY HELP
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SUPPORT OPTIONS
+===================================================== -->
+
+<section class="support-section">
+
+
+    <div class="section-heading">
+
+        <span>
+            FIND SUPPORT
+        </span>
+
+        <h2>
+            Choose the support you need.
+        </h2>
+
+        <p>
+
+            Everyone's situation is different.
+            Start with the option that feels most
+            comfortable for you.
+
+        </p>
+
+    </div>
+
+
+    <div class="support-grid">
+
+
+        <!-- CARD 1 -->
+
+        <div class="support-card">
+
+            <div class="support-icon">
+                🤝
+            </div>
+
+            <h3>
+                Talk to Someone You Trust
+            </h3>
+
+            <p>
+
+                A parent, guardian, teacher, friend
+                or another trusted person can provide
+                a listening ear and help you decide
+                what to do next.
+
+            </p>
+
+            <a
+                href="#people"
+                class="support-link"
+            >
+                FIND SOMEONE →
+            </a>
+
+        </div>
+
+
+
+        <!-- CARD 2 -->
+
+        <div class="support-card">
+
+            <div class="support-icon">
+                🧑‍⚕️
+            </div>
+
+            <h3>
+                Professional Support
+            </h3>
+
+            <p>
+
+                Qualified healthcare and mental-health
+                professionals can help people understand
+                their situation and identify appropriate
+                support.
+
+            </p>
+
+            <a
+                href="#professional"
+                class="support-link"
+            >
+                LEARN MORE →
+            </a>
+
+        </div>
+
+
+
+        <!-- CARD 3 -->
+
+        <div class="support-card">
+
+            <div class="support-icon">
+                🌱
+            </div>
+
+            <h3>
+                Self-Support Tools
+            </h3>
+
+            <p>
+
+                Explore simple activities that can help
+                you pause, reflect, manage difficult
+                moments and reconnect with your goals.
+
+            </p>
+
+            <a
+                href="#tools"
+                class="support-link"
+            >
+                EXPLORE TOOLS →
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COPING TOOLS
+===================================================== -->
+
+<section id="tools">
+
+
+    <div class="section-heading">
+
+        <span>
+            QUICK SUPPORT TOOLS
+        </span>
+
+        <h2>
+            Pause. Breathe. Reset.
+        </h2>
+
+        <p>
+
+            When a difficult moment arrives,
+            try one small action before making
+            an important decision.
+
+        </p>
+
+    </div>
+
+
+    <div class="tools-grid">
+
+
+        <div class="tool">
+
+            <div class="tool-icon">
+                🌬️
+            </div>
+
+            <h3>
+                Slow Breathing
+            </h3>
+
+            <p>
+
+                Take slow, comfortable breaths
+                and give yourself a moment to pause.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="tool">
+
+            <div class="tool-icon">
+                🚶
+            </div>
+
+            <h3>
+                Change Your Space
+            </h3>
+
+            <p>
+
+                Step away from a stressful environment
+                when it is safe to do so.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="tool">
+
+            <div class="tool-icon">
+                📝
+            </div>
+
+            <h3>
+                Write It Down
+            </h3>
+
+            <p>
+
+                Writing down what you are feeling
+                can help organize your thoughts.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="tool">
+
+            <div class="tool-icon">
+                📞
+            </div>
+
+            <h3>
+                Reach Out
+            </h3>
+
+            <p>
+
+                Contact someone you trust when
+                you feel that you need support.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SUPPORT NETWORK
+===================================================== -->
+
+<section
+    class="people-section"
+    id="people"
+>
+
+
+    <div class="section-heading">
+
+        <span>
+            YOUR SUPPORT NETWORK
+        </span>
+
+        <h2>
+            Who can you talk to?
+        </h2>
+
+        <p>
+
+            You don't need to figure everything out
+            by yourself. Consider reaching out to
+            someone who makes you feel safe and heard.
+
+        </p>
+
+    </div>
+
+
+    <div class="people-grid">
+
+
+        <div class="person">
+
+            <div class="person-icon">
+                👨‍👩‍👧
+            </div>
+
+            <h3>
+                Family
+            </h3>
+
+            <p>
+
+                A parent, guardian, sibling or another
+                family member may be able to listen,
+                support you and help you find further help.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="person">
+
+            <div class="person-icon">
+                🧑‍🏫
+            </div>
+
+            <h3>
+                Teacher or Mentor
+            </h3>
+
+            <p>
+
+                A trusted teacher, mentor or counselor
+                can help you talk through a difficult
+                situation and identify possible options.
+
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="person"
+            id="professional"
+        >
+
+            <div class="person-icon">
+                🧑‍⚕️
+            </div>
+
+            <h3>
+                Healthcare Professional
+            </h3>
+
+            <p>
+
+                Healthcare professionals can provide
+                appropriate assessment, guidance and
+                referrals when needed.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section>
+
+
+    <div class="section-heading">
+
+        <span>
+            SUPPORT FAQ
+        </span>
+
+        <h2>
+            Questions you might have.
+        </h2>
+
+    </div>
+
+
+    <div class="faq">
+
+
+        <!-- FAQ 1 -->
+
+        <div class="faq-item">
+
+            <button
+                class="faq-question"
+                onclick="toggleFAQ(this)"
+            >
+
+                What if I'm afraid to ask for help?
+
+                <span>
+                    +
+                </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+                <p>
+
+                    It is normal to feel nervous about
+                    talking about something difficult.
+                    You can start with one person you
+                    trust and share only what you feel
+                    comfortable sharing.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FAQ 2 -->
+
+        <div class="faq-item">
+
+            <button
+                class="faq-question"
+                onclick="toggleFAQ(this)"
+            >
+
+                How can I support a friend?
+
+                <span>
+                    +
+                </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+                <p>
+
+                    Listen without judging, encourage
+                    them to talk to a trusted adult or
+                    qualified professional, and avoid
+                    promising to keep serious safety
+                    concerns secret.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FAQ 3 -->
+
+        <div class="faq-item">
+
+            <button
+                class="faq-question"
+                onclick="toggleFAQ(this)"
+            >
+
+                Does asking for help mean I failed?
+
+                <span>
+                    +
+                </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+                <p>
+
+                    No. Reaching out can be a positive
+                    and responsible decision. Everyone
+                    needs support at different points
+                    in life.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FAQ 4 -->
+
+        <div class="faq-item">
+
+            <button
+                class="faq-question"
+                onclick="toggleFAQ(this)"
+            >
+
+                What if someone is in immediate danger?
+
+                <span>
+                    +
+                </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+                <p>
+
+                    Contact your local emergency service
+                    or seek immediate help from a trusted
+                    adult or nearby professional. Stay with
+                    the person if it is safe for you to do so.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINAL MESSAGE
+===================================================== -->
+
+<section class="final-message">
+
+    <div class="final-icon">
+        💙
+    </div>
+
+
+    <h2>
+
+        You matter.
+        <span>Keep going.</span>
+
+    </h2>
+
+
+    <p>
+
+        One conversation can be the beginning of a
+        positive change. One healthy choice can protect
+        your future. And one step toward support is still
+        a step forward.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+
+        © 2026
+        <span>FOR THEM</span>
+        • Prevention starts with awareness.
+
+    </p>
+
+
+    <p>
+
+        Learn • Prevent • Support • Recover
+
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     EMERGENCY POPUP
+===================================================== -->
+
+<div
+    class="emergency-modal"
+    id="emergencyModal"
+>
+
+
+    <div class="emergency-box">
+
+
+        <!-- CLOSE -->
+
+        <button
+            class="emergency-close"
+            onclick="closeEmergency()"
+            aria-label="Close"
+        >
+
+            ×
+
+        </button>
+
+
+        <div class="emergency-icon">
+            🚨
+        </div>
+
+
+        <h2>
+            Need immediate help?
+        </h2>
+
+
+        <p>
+
+            If you or someone else is in immediate
+            danger, contact emergency services or
+            get help from a trusted person nearby.
+
+        </p>
+
+
+        <div class="emergency-actions">
+
+
+            <!-- PHONE CALL -->
+
+            <a
+                href="tel:112"
+                class="call-btn"
+            >
+
+                📞 Call 112
+
+            </a>
+
+
+            <!-- CLOSE -->
+
+            <button
+                class="cancel-btn"
+                onclick="closeEmergency()"
+            >
+
+                I'M SAFE FOR NOW
+
+            </button>
+
+
+        </div>
+
+
+        <small>
+
+            On a phone, the call button can open
+            the device's phone application.
+
+        </small>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+    /* =================================================
+       EMERGENCY POPUP
+    ================================================= */
+
+    function showEmergency() {
+
+        const modal =
+            document.getElementById(
+                "emergencyModal"
+            );
+
+        modal.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeEmergency() {
+
+        const modal =
+            document.getElementById(
+                "emergencyModal"
+            );
+
+        modal.classList.remove("show");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+
+    /* =================================================
+       CLOSE POPUP WHEN CLICKING OUTSIDE
+    ================================================= */
+
+    document
+        .getElementById("emergencyModal")
+        .addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target === this
+                ) {
+
+                    closeEmergency();
+
+                }
+
+            }
+        );
+
+
+
+    /* =================================================
+       ESC KEY
+    ================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeEmergency();
+
+            }
+
+        }
+    );
+
+
+
+    /* =================================================
+       FAQ
+    ================================================= */
+
+    function toggleFAQ(button) {
+
+        const currentItem =
+            button.parentElement;
+
+
+        const allItems =
+            document.querySelectorAll(
+                ".faq-item"
+            );
+
+
+        allItems.forEach(
+            function (item) {
+
+                if (
+                    item !== currentItem
+                ) {
+
+                    item.classList.remove(
+                        "open"
+                    );
+
+                }
+
+            }
+        );
+
+
+        currentItem.classList.toggle(
+            "open"
+        );
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
